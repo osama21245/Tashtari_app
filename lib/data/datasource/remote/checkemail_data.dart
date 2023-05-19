@@ -1,0 +1,14 @@
+import '../../../core/class/crud.dart';
+import '../../../linksApi.dart';
+
+class CheckemailData {
+  Crud crud;
+
+  CheckemailData(this.crud);
+
+  getData(String email) async {
+    var response =
+        await crud.postData(Apilinks.linkcheckemail, {"email": email});
+    return response.fold((l) => l, (r) => r);
+  }
+}
