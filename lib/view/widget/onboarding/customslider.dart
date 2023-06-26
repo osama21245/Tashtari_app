@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/controller/onBoardingControoler.dart';
@@ -27,7 +29,8 @@ class CustomSliderOnBoarding extends GetView<onBoardingControllerImp> {
                 child: Container(
                   margin: EdgeInsets.only(left: size.width * 0.06),
                   child: Text("${onBoardingList[i].title!}",
-                      style: Theme.of(context).textTheme.headline1),
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 ),
               ),
               SizedBox(
@@ -48,7 +51,7 @@ class CustomSliderOnBoarding extends GetView<onBoardingControllerImp> {
               Text(
                 "${onBoardingList[i].body!}",
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText1,
+                style: TextStyle(height: 2, color: AppColor.grey, fontSize: 18),
               )
             ],
           );

@@ -20,25 +20,26 @@ class Customoffers extends GetView<ImphomePageControoler> {
               color: AppColor.primaryColor,
               borderRadius: BorderRadius.circular(20)),
           child: ListTile(
-            title: Text("25".tr,
+            title: Text("${controller.settingTitle}",
                 style: const TextStyle(color: Colors.white, fontSize: 20)),
-            subtitle: const Text("Cashback 20%",
+            subtitle: Text("${controller.settingsbody}",
                 style: TextStyle(color: Colors.white, fontSize: 30)),
           ),
         ),
         Positioned(
-          top: -20,
-          left: controller.langselected == "ar" ? -20 : null,
-          right: controller.langselected == "en" ? -20 : null,
-          child: Container(
-            child: Image.asset(AppImageAsset.logo),
-            height: 160,
-            width: 160,
-            decoration: BoxDecoration(
-                color: AppColor.secoundColor,
-                borderRadius: BorderRadius.circular(160)),
-          ),
-        )
+            top: -20,
+            left: controller.langselected == "ar" ? -20 : null,
+            right: controller.langselected == "en" ? -20 : null,
+            child: CircleAvatar(
+              backgroundColor: AppColor.secoundColor,
+              radius: 80,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 30.0),
+                child: Image.asset(
+                  AppImageAsset.logo,
+                ),
+              ),
+            ))
       ]),
     );
   }

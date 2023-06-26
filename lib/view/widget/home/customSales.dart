@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/home/homeControoler.dart';
-import '../../../data/datasource/static/APIs/woocommere_api.dart';
-import '../../../data/model/itemmodel.dart';
+import '../../../controller/offersController.dart';
+import '../../../data/model/item_model.dart';
 import '../../../linksApi.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class Customsales extends GetView<ImphomePageControoler> {
+class Customsales extends GetView<ImpoffersController> {
   const Customsales({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(ImpoffersController());
     Size size = MediaQuery.of(context).size;
-    Woocommerce_r controoller2 = Woocommerce_r();
     return SizedBox(
         height: 200,
-        child: GetBuilder<ImphomePageControoler>(builder: (c) {
+        child: GetBuilder<ImpoffersController>(builder: (c) {
           return Container(
             height: size.height * 0.2,
             child: ListView.builder(
-                itemCount: controller.items.length,
+                itemCount: controller.data.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, i) {
                   return item(
                       controller: controller,
                       size: size,
-                      itemmodel: Itemmodel.fromJson(controller.items[i]));
+                      itemmodel: controller.data[i]);
                 }),
           );
         }));
@@ -41,7 +40,7 @@ class item extends StatelessWidget {
     required this.itemmodel,
   });
 
-  final ImphomePageControoler controller;
+  final ImpoffersController controller;
   final Size size;
   final Itemmodel itemmodel;
 
@@ -50,13 +49,18 @@ class item extends StatelessWidget {
     return Stack(
       children: [
         Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 34, vertical: 10),
             margin: const EdgeInsets.symmetric(horizontal: 10),
-            child: CachedNetworkImage(
-              imageUrl: "${Apilinks.linkimageItems}/${itemmodel.itemsImage}",
-              height: 100,
-              width: 150,
-              fit: BoxFit.fill,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 15.0,
+              ),
+              child: CachedNetworkImage(
+                imageUrl: "${Apilinks.linkimageItems}/${itemmodel.itemsImage}",
+                height: size.height * 0.12,
+                width: size.width * 0.30,
+                fit: BoxFit.fill,
+              ),
             )),
         Container(
           decoration: BoxDecoration(
@@ -68,12 +72,16 @@ class item extends StatelessWidget {
         Positioned(
             left: 23,
             child: Text(
-              "${itemmodel.itemsImage}",
+              "${itemmodel.itemsName}",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 14),
-            ))
+            )),
+        Image.asset(
+          "assets/images/001-sale.png",
+          height: size.height * 0.05,
+        )
       ],
     );
   }

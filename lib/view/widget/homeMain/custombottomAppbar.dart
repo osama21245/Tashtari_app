@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class customBottomAppbar extends StatelessWidget {
   void Function()? onpressed;
   String Texticon;
@@ -22,14 +23,11 @@ class customBottomAppbar extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: active == true ? Colors.blue : Colors.black,
+            color: active == true ? Colors.blue : null,
           ),
           Text(
             Texticon,
-            style: TextStyle(
-                color: active == true
-                    ? Colors.blue
-                    : Color.fromARGB(255, 71, 71, 71)),
+            style: TextStyle(color: active == true ? Colors.blue : null),
           )
         ],
       ),

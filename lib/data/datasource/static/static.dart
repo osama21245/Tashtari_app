@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constant/imgaeasset.dart';
-import '../../model/onboardingmodel.dart';
+import '../../model/onboarding_model.dart';
 
 List<onBoardingModel> onBoardingList = [
   onBoardingModel("3".tr, "2".tr, AppImageAsset.onBoardingImageOne),

@@ -8,7 +8,6 @@ import '../../../core/function/valid.dart';
 import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
-import '../../widget/auth/customtexttitleauth.dart';
 import '../../widget/auth/logoauth.dart';
 
 class Login extends StatelessWidget {
@@ -36,8 +35,10 @@ class Login extends StatelessWidget {
                     SizedBox(height: size.height * 0.04),
                     Text('7'.tr,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headline1!.copyWith(
-                            color: Color.fromARGB(255, 138, 137, 138))),
+                        style:
+                            TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
+                                .copyWith(
+                                    color: Color.fromARGB(255, 138, 137, 138))),
                     SizedBox(height: size.height * 0.03),
                     CustomTextBodyAuth(text: "8".tr),
                     SizedBox(height: size.height * 0.03),

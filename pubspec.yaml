@@ -49,6 +49,10 @@ dependencies:
   flutter_svg: ^2.0.5
   cached_network_image: ^3.2.3
   dio: ^5.1.1
+  rating_dialog: ^2.0.4
+  flutter_ringtone_player: ^3.2.0
+
+ 
 
 
 dev_dependencies:

@@ -1,9 +1,9 @@
 class Apilinks {
-  static const String linskServerName = "http://10.0.2.2/ecommerce2";
+  static const String linskServerName = "https://0samaahmed.com/ecommerce2";
   static const String linkimageCategories =
-      "http://10.0.2.2/ecommerce2/upload/categories";
+      "https://0samaahmed.com/ecommerce2/upload/categories";
   static const String linkimageItems =
-      "http://10.0.2.2/ecommerce2/upload/items";
+      "https://0samaahmed.com/ecommerce2/upload/items";
 
 //===================== Auth ==================
   static const String linksignup = "$linskServerName/auth/signup.php";
@@ -24,6 +24,15 @@ class Apilinks {
   static const String linkdeleteitemfavorite =
       "$linskServerName/favorite/deleteitem.php";
 
+  //==============cart=============================
+  static const String linkaddcart = "$linskServerName/cart/add.php";
+  static const String linkdeletecart = "$linskServerName/cart/delete.php";
+  static const String linkviewcart = "$linskServerName/cart/view.php";
+  static const String linkcountitem = "$linskServerName/cart/showcount.php";
+
+  // static const String linkdeleteitemcart =
+  // "$linskServerName/favorite/deleteitem.php";
+
 //=====================
 
   static const String linkview = "$linskServerName/categories/view.php";
@@ -37,6 +46,32 @@ class Apilinks {
   static const String linkmobile = "$linkimageCategories/mobile.svg";
   static const String linklaptop = "$linkimageCategories/laptop.svg";
   static const String linkshose = "$linkimageCategories/shoes.svg";
+
+  //search
+  static const String linksearch = "$linskServerName/search.php";
+
+  //==============address=============================
+  static const String linkaddaddress = "$linskServerName/address/add.php";
+  static const String linkdeleteaddress = "$linskServerName/address/delete.php";
+  static const String linkviewaddress = "$linskServerName/address/view.php";
+  static const String linkupdateaddress = "$linskServerName/address/update.php";
+
+  //==============coupon=============================
+  static const String linkcheckcoupon =
+      "$linskServerName/coupon/checkcoupon.php";
+
+  //=================orders==========================
+  static const String linkorderscheckout =
+      "$linskServerName/orders/checkout.php";
+  static const String linkorderspending = "$linskServerName/orders/pending.php";
+  static const String linkordersdetails = "$linskServerName/orders/details.php";
+  static const String linkordersdelete = "$linskServerName/orders/delete.php";
+  static const String linkordersarchive = "$linskServerName/orders/archive.php";
+  //=================offers==========================
+  static const String linkoffers = "$linskServerName/offers.php";
+
+  //=================rating==========================
+  static const String linkrating = "$linskServerName/rating.php";
 }
 
 

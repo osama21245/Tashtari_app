@@ -28,10 +28,13 @@ class Checkemail extends StatelessWidget {
                     SizedBox(height: size.height * 0.04),
                     Text("Check email",
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headline1!.copyWith(
-                            color: Color.fromARGB(255, 138, 137, 138))),
+                        style: const TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold)
+                            .copyWith(
+                                color:
+                                    const Color.fromARGB(255, 138, 137, 138))),
                     SizedBox(height: size.height * 0.02),
-                    CustomTextBodyAuth(
+                    const CustomTextBodyAuth(
                         text:
                             "please Enter Your Email Adress To Recive a Verify code"),
                     SizedBox(height: size.height * 0.05),

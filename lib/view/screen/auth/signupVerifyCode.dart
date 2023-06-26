@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
-import '../../../controller/auth/forgetpassword/verifycodeController.dart';
 import '../../../controller/auth/signupVerifyCodeController.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 
@@ -20,9 +19,7 @@ class signupVerifyCode extends StatelessWidget {
           SizedBox(height: size.height * 0.04),
           Text("Verify code",
               textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline1!
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
                   .copyWith(color: Color.fromARGB(255, 138, 137, 138))),
           SizedBox(height: size.height * 0.02),
           GetBuilder<ImpsignupVerifycodeController>(

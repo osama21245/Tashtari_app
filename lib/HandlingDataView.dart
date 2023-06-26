@@ -3,6 +3,7 @@ import 'package:woocommerce_app/core/class/statusrequest.dart';
 import 'package:lottie/lottie.dart';
 import 'package:woocommerce_app/core/constant/imgaeasset.dart';
 
+// ignore: must_be_immutable
 class HandlingDataView extends StatelessWidget {
   StatusRequest? statusRequest;
   Widget widget;

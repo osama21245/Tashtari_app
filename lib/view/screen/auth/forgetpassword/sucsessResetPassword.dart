@@ -17,9 +17,7 @@ class sucessResetPassword extends StatelessWidget {
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
         title: Text('Succes',
-            style: Theme.of(context)
-                .textTheme
-                .headline1!
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
                 .copyWith(color: AppColor.grey)),
       ),
       body: Container(

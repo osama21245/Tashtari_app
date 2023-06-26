@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:woocommerce_app/core/constant/imgaeasset.dart';
 import '../../../linksApi.dart';
-import '../../model/imageListmodel.dart';
+import '../../model/imageList_model.dart';
 import '../../../core/constant/imgaeasset.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

@@ -1,19 +1,27 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:woocommerce_app/core/constant/routesname.dart';
 import 'package:woocommerce_app/core/constant/services/services.dart';
-import 'package:woocommerce_app/view/widget/homeMain/item/customCategoriesitem.dart';
 
 import '../../core/class/statusrequest.dart';
 import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/home_data.dart';
-import '../../view/screen/home/items/itempage.dart';
+import '../../data/model/item_model.dart';
 
 abstract class homePageControoler extends GetxController {
   StatusRequest? statusRequest;
+  List<Itemmodel> searchlist = [];
   List items = [];
   List categories = [];
+  List settings = [];
+  String settingTitle = "";
+  String settingsbody = "";
+  int settingsDeliveryTime = 0;
+  bool issearch = false;
+  TextEditingController? search2;
+  checkSearch(String val);
   getData();
   gotoitem(List categories, int selectedkat, String catid);
   HomeData homeData = HomeData(Get.find());
@@ -22,10 +30,26 @@ abstract class homePageControoler extends GetxController {
   String? phone;
   String? email;
   String? name;
-  int? id;
+
+  String? id;
 }
 
 class ImphomePageControoler extends homePageControoler {
+  @override
+  checkSearch(String val) {
+    if (val == "") {
+      issearch = false;
+      statusRequest = StatusRequest.success;
+      searchlist.clear();
+    }
+    update();
+  }
+
+  onsearchitems() {
+    issearch = true;
+    update();
+  }
+
   @override
   gotoitem(categories, selectedkat, catid) {
     Get.toNamed(AppRoutes.itemmain, arguments: {
@@ -42,8 +66,16 @@ class ImphomePageControoler extends homePageControoler {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        items.addAll(response["items"]);
-        categories.addAll(response["categories"]);
+        List data = response["items"]["data"];
+        items.addAll(data.map((e) => Itemmodel.fromJson(e)));
+        categories.addAll(response["categories"]["data"]);
+        settings.addAll(response["settings"]["data"]);
+        settingTitle = settings[0]["settings_title"];
+        settingsbody = settings[0]["settings_body"];
+        settingsDeliveryTime = int.parse(settings[0]["settings_deliverytime"]);
+        myservices.sharedPreferences
+            .setInt("deliverytime", settingsDeliveryTime);
+        print(settingsDeliveryTime);
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -51,16 +83,41 @@ class ImphomePageControoler extends homePageControoler {
     update();
   }
 
+  search() async {
+    statusRequest = StatusRequest.loading;
+    var response = await homeData.search(search2!.text);
+    print("==================$response");
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        searchlist.clear();
+        List searchresponse = response["data"];
+        searchlist.addAll(searchresponse.map((e) => Itemmodel.fromJson(e))
+            as Iterable<Itemmodel>);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
+  gotoitemdetails(itemsmodel) {
+    Get.toNamed(AppRoutes.itemdetails, arguments: {"itemsmodel": itemsmodel});
+  }
+
   @override
   void onInit() {
-    id = myservices.sharedPreferences.getInt("id");
+    search2 = TextEditingController();
+    id = myservices.sharedPreferences.getString("id");
     email = myservices.sharedPreferences.getString("email");
     name = myservices.sharedPreferences.getString("name");
     phone = myservices.sharedPreferences.getString("phone");
+    String? userid = myservices.sharedPreferences.getString("id");
+    FirebaseMessaging.instance.subscribeToTopic("users");
+    FirebaseMessaging.instance.subscribeToTopic("users${userid}");
     print(id);
     getData();
     langselected = myservices.sharedPreferences.getString("lang");
-
     super.onInit();
   }
 }

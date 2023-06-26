@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/controller/home/homeControoler.dart';
 import 'package:woocommerce_app/core/constant/color.dart';
+import 'package:woocommerce_app/core/constant/routesname.dart';
 
 import 'controller/settingscontroller.dart';
+import 'core/constant/services/theme.dart';
 
-class Settings extends GetView<ImphomePageControoler> {
+class Settings extends StatefulWidget {
   const Settings({super.key});
 
   @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  @override
   Widget build(BuildContext context) {
     ImpsettingsController controllerSetting = Get.put(ImpsettingsController());
-
+    ImphomePageControoler controller = Get.put(ImphomePageControoler());
     Size size = MediaQuery.of(context).size;
 
     return ListView(
@@ -119,11 +126,24 @@ class Settings extends GetView<ImphomePageControoler> {
             horizontal: 13,
           ),
           child: Card(
+            color: const Color.fromARGB(255, 70, 69, 69),
             child: ListTile(
-              trailing: Switch(value: true, onChanged: (value2) {}),
+              trailing: Switch(
+                  value: ThemeSrevice().isSavedDarkMode(),
+                  onChanged: (value2) {
+                    setState(() {
+                      ThemeSrevice().changeTheme();
+                    });
+                  }),
               contentPadding: EdgeInsets.symmetric(horizontal: 19),
-              title: Text("Off Notfication",
-                  style: TextStyle(fontFamily: "PlayfairDisplay")),
+              title: Row(
+                children: [
+                  Text("Dark Mode",
+                      style: TextStyle(
+                          fontFamily: "PlayfairDisplay", color: Colors.white)),
+                  Icon(Icons.nightlight_outlined, color: Colors.white)
+                ],
+              ),
             ),
           ),
         ),
@@ -146,12 +166,33 @@ class Settings extends GetView<ImphomePageControoler> {
           padding: const EdgeInsets.symmetric(
             horizontal: 13,
           ),
-          child: Card(
-            child: ListTile(
-              trailing: Icon(Icons.phone),
-              contentPadding: EdgeInsets.symmetric(horizontal: 19),
-              title: Text("Contact Us",
-                  style: TextStyle(fontFamily: "PlayfairDisplay")),
+          child: InkWell(
+            onTap: () {},
+            child: Card(
+              child: ListTile(
+                trailing: Icon(Icons.phone),
+                contentPadding: EdgeInsets.symmetric(horizontal: 19),
+                title: Text("Contact Us",
+                    style: TextStyle(fontFamily: "PlayfairDisplay")),
+              ),
+            ),
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            Get.toNamed(AppRoutes.Orderspending);
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 13,
+            ),
+            child: Card(
+              child: ListTile(
+                trailing: Icon(Icons.shopping_cart_outlined),
+                contentPadding: EdgeInsets.symmetric(horizontal: 19),
+                title: Text("Orders",
+                    style: TextStyle(fontFamily: "PlayfairDisplay")),
+              ),
             ),
           ),
         ),
@@ -159,14 +200,37 @@ class Settings extends GetView<ImphomePageControoler> {
           padding: const EdgeInsets.symmetric(
             horizontal: 13,
           ),
-          child: Card(
-            child: ListTile(
-              trailing: Icon(Icons.location_on_outlined),
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 19,
+          child: InkWell(
+            onTap: () {
+              Get.toNamed(AppRoutes.Orderarchive);
+            },
+            child: Card(
+              child: ListTile(
+                trailing: Icon(Icons.archive_outlined),
+                contentPadding: EdgeInsets.symmetric(horizontal: 19),
+                title: Text("Archive",
+                    style: TextStyle(fontFamily: "PlayfairDisplay")),
               ),
-              title: Text("Adress",
-                  style: TextStyle(fontFamily: "PlayfairDisplay")),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 13,
+          ),
+          child: InkWell(
+            onTap: () {
+              Get.toNamed(AppRoutes.addressview);
+            },
+            child: Card(
+              child: ListTile(
+                trailing: Icon(Icons.location_on_outlined),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 19,
+                ),
+                title: Text("Adress",
+                    style: TextStyle(fontFamily: "PlayfairDisplay")),
+              ),
             ),
           ),
         ),

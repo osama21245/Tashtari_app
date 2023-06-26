@@ -5,8 +5,9 @@ import 'package:woocommerce_app/core/constant/services/services.dart';
 
 import '../../core/class/statusrequest.dart';
 import '../../core/function/handlingdata.dart';
+import '../../data/datasource/remote/home_data.dart';
 import '../../data/datasource/remote/item_data.dart';
-import '../../data/model/itemmodel.dart';
+import '../../data/model/item_model.dart';
 
 abstract class itemControoler extends GetxController {
   initialData();
@@ -19,16 +20,54 @@ abstract class itemControoler extends GetxController {
   String? langSelected;
   MyServices myservices = Get.find();
   Itemmodel? itemsmodel;
-  int? id;
+  String? id;
+  int? delevirytime;
+  List<Itemmodel> searchlist = [];
+  bool issearch = false;
+  TextEditingController? search2;
+  checkSearch(String val);
+  HomeData homeData = HomeData(Get.find());
 }
 
 class ImpitemControoler extends itemControoler {
+  checkSearch(String val) {
+    if (val == "") {
+      issearch = false;
+      statusRequest = StatusRequest.success;
+      searchlist.clear();
+    }
+    update();
+  }
+
+  onsearchitems() {
+    issearch = true;
+    update();
+  }
+
+  search() async {
+    statusRequest = StatusRequest.loading;
+    var response = await homeData.search(search2!.text);
+    print("==================$response");
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        searchlist.clear();
+        List searchresponse = response["data"];
+        searchlist.addAll(searchresponse.map((e) => Itemmodel.fromJson(e))
+            as Iterable<Itemmodel>);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
   @override
   getData(categoriesid) async {
     items.clear();
     statusRequest = StatusRequest.loading;
     var response = await itmedata.getData(
-        categoriesid, myservices.sharedPreferences.getInt("id").toString());
+        categoriesid, myservices.sharedPreferences.getString("id").toString());
     print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
@@ -45,7 +84,6 @@ class ImpitemControoler extends itemControoler {
     Get.toNamed(AppRoutes.itemdetails, arguments: {"itemsmodel": itemsmodel});
   }
 
-  @override
   dynamic kategorie;
   List categories = [];
   int? selectedkat;
@@ -60,7 +98,6 @@ class ImpitemControoler extends itemControoler {
     langSelected = myservices.sharedPreferences.getString("lang");
   }
 
-  @override
   changecatid(String id) {
     catid = id;
     update();
@@ -76,7 +113,9 @@ class ImpitemControoler extends itemControoler {
 
   @override
   void onInit() {
-    id = myservices.sharedPreferences.getInt("id");
+    search2 = TextEditingController();
+    id = myservices.sharedPreferences.getString("id");
+    delevirytime = myservices.sharedPreferences.getInt("deliverytime");
     print(id);
     initialData();
     super.onInit();

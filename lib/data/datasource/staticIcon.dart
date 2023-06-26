@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:woocommerce_app/data/model/iconlistmodel.dart';
+import 'package:woocommerce_app/data/model/iconlist_model.dart';
 
 List<iconmodel> iconList = [
   iconmodel(

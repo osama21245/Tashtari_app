@@ -4,7 +4,6 @@ import 'package:woocommerce_app/core/constant/routesname.dart';
 
 import '../../../core/constant/color.dart';
 import '../../widget/auth/custombuttonauth.dart';
-import '../../widget/auth/customtextbodyauth.dart';
 
 class sucessSignup extends StatelessWidget {
   const sucessSignup({super.key});
@@ -18,9 +17,7 @@ class sucessSignup extends StatelessWidget {
         backgroundColor: AppColor.backgroundcolor,
         elevation: 0.0,
         title: Text('Succes',
-            style: Theme.of(context)
-                .textTheme
-                .headline1!
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
                 .copyWith(color: AppColor.grey)),
       ),
       body: Container(

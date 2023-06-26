@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/core/constant/services/services.dart';
 
+import '../../function/fcmconfig.dart';
+
 class LocaleController extends GetxController {
   Locale? language;
 
@@ -15,6 +17,8 @@ class LocaleController extends GetxController {
 
   @override
   void onInit() {
+    requestPermissionNotification();
+    fcmconfig();
     String? sharedPrefLang = myServices.sharedPreferences.getString("lang");
     if (sharedPrefLang == "ar") {
       language = const Locale("ar");

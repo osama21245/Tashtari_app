@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 class AppRoutes {
   static const login = "/login";
   static const onboarding = "/onboarding";
@@ -19,4 +16,12 @@ class AppRoutes {
   static const itemdetails = "/itemdetails";
   static const favorite = "/favorite";
   static const settings = "/settings";
+  static const cart = "/cart";
+  static const addressadd = "/addressadd";
+  static const addressview = "/address";
+  static const addressupdate = "/addressupdate";
+  static const checkout = "/checkout";
+  static const Orderspending = "/Orderspending";
+  static const OrdersDetails = "/OrdersDetails";
+  static const Orderarchive = "/Orderarchive";
 }

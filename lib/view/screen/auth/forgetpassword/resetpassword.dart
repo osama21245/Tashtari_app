@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../HandlingDataView.dart';
-import '../../../../controller/auth/loginController.dart';
 import '../../../../controller/auth/forgetpassword/resetpasswordController.dart';
-import '../../../../core/constant/color.dart';
 import '../../../../core/function/valid.dart';
 import '../../../widget/auth/custombuttonauth.dart';
 import '../../../widget/auth/customtextbodyauth.dart';
@@ -28,10 +26,9 @@ class ResetPassword extends StatelessWidget {
             SizedBox(height: size.height * 0.04),
             Text("Reset password",
                 textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline1!
-                    .copyWith(color: Color.fromARGB(255, 138, 137, 138))),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
+                        .copyWith(color: Color.fromARGB(255, 138, 137, 138))),
             SizedBox(height: size.height * 0.015),
             CustomTextBodyAuth(text: "Please Enter New Password"),
             SizedBox(height: size.height * 0.07),

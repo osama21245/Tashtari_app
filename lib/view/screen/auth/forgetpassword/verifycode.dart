@@ -18,10 +18,8 @@ class VerifyCode extends GetView<ImpverifycodeController> {
           SizedBox(height: size.height * 0.04),
           Text("Verify code",
               textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline1!
-                  .copyWith(color: Color.fromARGB(255, 138, 137, 138))),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
+                  .copyWith(color: const Color.fromARGB(255, 138, 137, 138))),
           SizedBox(height: size.height * 0.02),
           CustomTextBodyAuth(
               text: "please Enter The Code Send to ${controller.email}"),

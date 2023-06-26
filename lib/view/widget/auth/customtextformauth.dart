@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustonTextFormAuth extends StatelessWidget {
   final String hinttext;
   final String labeltext;

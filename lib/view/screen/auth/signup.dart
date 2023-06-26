@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:woocommerce_app/HandlingDataView.dart';
 import 'package:woocommerce_app/controller/auth/signupControoler.dart';
 
-import '../../../controller/auth/loginController.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/function/valid.dart';
 import '../../widget/auth/custombuttonauth.dart';
@@ -32,9 +31,8 @@ class Signup extends StatelessWidget {
                         SizedBox(height: size.height * 0.04),
                         Text('14'.tr,
                             textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline1!
+                            style: const TextStyle(
+                                    fontSize: 24, fontWeight: FontWeight.bold)
                                 .copyWith(
                                     color: Color.fromARGB(255, 138, 137, 138))),
                         SizedBox(height: size.height * 0.05),

@@ -10,6 +10,7 @@ class Customyourtext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(bottom: 10),
       child: Text(Title,
           style: TextStyle(

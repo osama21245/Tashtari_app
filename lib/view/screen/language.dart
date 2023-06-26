@@ -17,7 +17,8 @@ class Language extends GetView<LocaleController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("1".tr, style: Theme.of(context).textTheme.headline1),
+              Text("1".tr,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
               const SizedBox(height: 20),
               CustomButtonLang(
                   textbutton: "Ar",

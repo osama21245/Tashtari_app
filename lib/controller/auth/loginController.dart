@@ -1,3 +1,5 @@
+// ignore_for_file: override_on_non_overriding_member, unused_local_variable
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,7 +42,9 @@ class ImploginController extends loginController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        myservices.sharedPreferences.setInt("id", response["data"]["users_id"]);
+        myservices.sharedPreferences
+            .setString("id", response["data"]["users_id"]);
+        String? userid = myservices.sharedPreferences.getString("id");
         myservices.sharedPreferences
             .setString("email", response["data"]["users_email"]);
         myservices.sharedPreferences
@@ -48,6 +52,8 @@ class ImploginController extends loginController {
         myservices.sharedPreferences
             .setString("phone", response["data"]["users_phone"]);
         myservices.sharedPreferences.setString("step", "2");
+        FirebaseMessaging.instance.subscribeToTopic("users");
+        FirebaseMessaging.instance.subscribeToTopic("users${userid}");
 
         Get.offAllNamed(AppRoutes.homemain);
       } else {

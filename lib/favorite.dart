@@ -1,13 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:woocommerce_app/core/constant/routesname.dart';
-import 'package:woocommerce_app/data/model/favoratemodel.dart';
+import 'package:woocommerce_app/view/widget/favorite/Customefavoritecard.dart';
+import 'package:woocommerce_app/view/widget/home/CustomSearchResult.dart';
 import 'package:woocommerce_app/view/widget/home/customSearch.dart';
 
 import 'HandlingDataView.dart';
 import 'controller/favouriteController.dart';
-import 'core/constant/color.dart';
 import 'core/function/databaseTranslate.dart';
 import 'linksApi.dart';
 
@@ -20,81 +18,67 @@ class Favorite extends GetView<ImpfavourateController> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         body: GetBuilder<ImpfavourateController>(
-            builder: (controller) => HandlingDataView(
-                  statusRequest: controller.statusRequest,
-                  widget: Container(
-                    child: ListView(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 12.0, right: 12.0, top: 8),
-                          child: Customsearech(
-                            onpressedfav: () {},
-                          ),
+            builder: (controller) => Container(
+                  child: ListView(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 12.0, right: 12.0, top: 8),
+                        child: Customsearech(
+                          apperFavandNot: false,
+                          onchange: (val) {
+                            controller.checkSearch(val);
+                          },
+                          onpressedfav: () {},
+                          mycontroller: controller.search2!,
+                          onpressedsearch: () async {
+                            controller.onsearchitems();
+                            await controller.search();
+                          },
                         ),
-                        SizedBox(
-                          height: size.height * 0.02,
-                        ),
-                        GridView.builder(
-                            itemCount: controller.data2.length,
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    childAspectRatio: 3.3, crossAxisCount: 1),
-                            itemBuilder: (BuildContext context, i) {
-                              return Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 1, horizontal: 8),
-                                  child: controller.data[i].favoriteId != null
-                                      ? Card(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 20.0, left: 7),
-                                            child: ListTile(
-                                              trailing: IconButton(
-                                                  onPressed: () {
-                                                    controller
-                                                        .deleteitemfromFav(
-                                                            controller.data[i]
-                                                                .favoriteId
-                                                                .toString());
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.delete_outline,
-                                                    color: Colors.red,
-                                                  )),
-                                              subtitle: Text(
-                                                "\$ ${controller.data[i].itemsPrice}",
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.w300),
-                                              ),
-                                              title: Text(
-                                                databaseTranslate(
-                                                    "${controller.data[i].itemsNameAr}",
-                                                    "${controller.data[i].itemsName}"),
-                                              ),
-                                              leading: CachedNetworkImage(
-                                                height: size.height * 0.15,
-                                                fit: BoxFit.fill,
-                                                imageUrl:
-                                                    Apilinks.linkimageItems +
-                                                        "/" +
-                                                        controller.data[i]
-                                                            .itemsImage!,
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                      : null);
-                            }),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        height: size.height * 0.02,
+                      ),
+                      HandlingDataView(
+                          statusRequest: controller.statusRequest,
+                          widget: !controller.issearch
+                              ? GridView.builder(
+                                  itemCount: controller.data.length,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          childAspectRatio: 3.3,
+                                          crossAxisCount: 1),
+                                  itemBuilder: (BuildContext context, i) {
+                                    return CustomfavoriteCard(
+                                      image: Apilinks.linkimageItems +
+                                          "/" +
+                                          controller.data[i].itemsImage!,
+                                      title: databaseTranslate(
+                                          "${controller.data[i].itemsNameAr}",
+                                          "${controller.data[i].itemsName}"),
+                                      subtitle:
+                                          "\$ ${controller.data[i].itemsPrice}",
+                                      ondelete: () async {
+                                        await controller.deleteitemfromFav(
+                                            controller.data[i].favoriteId
+                                                .toString());
+                                        controller.refreshpage();
+                                      },
+                                      size: size,
+                                    );
+                                  })
+                              : searchResult(
+                                  itemmodel: controller.searchlist,
+                                ))
+                    ],
                   ),
                 )));
   }
 }
+
 
 // class items extends GetView<ImpfavourateController> {
 //   Favoritemodel favoritemodel;
