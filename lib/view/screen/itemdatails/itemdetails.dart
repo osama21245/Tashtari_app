@@ -11,7 +11,7 @@ import '../../widget/itemdetails/customImage.dart';
 import '../../widget/itemdetails/custombuttomNavigationbar.dart';
 
 class itemdetails extends GetView<ImpitemdetailsController> {
-  itemdetails({
+  const itemdetails({
     super.key,
   });
 
@@ -22,12 +22,11 @@ class itemdetails extends GetView<ImpitemdetailsController> {
 
     return Scaffold(
         bottomNavigationBar: CustombuttomNavigationbar(
-          buttonName: "Go To Cart",
+          buttonName: "52".tr,
           onpressed: () {
             controller.gotocart();
           },
         ),
-        backgroundColor: Color.fromARGB(251, 255, 255, 255),
         body: GetBuilder<ImpitemdetailsController>(
             builder: (c) => HandlingDataView(
                   statusRequest: c.statusRequest,
@@ -35,30 +34,30 @@ class itemdetails extends GetView<ImpitemdetailsController> {
                     child: Container(
                         child: ListView(
                       children: [
-                        Customimage(),
+                        const Customimage(),
                         SizedBox(
                           height: size.height * 0.20,
                         ),
                         Container(
-                          padding: EdgeInsets.all(13),
+                          padding: const EdgeInsets.all(13),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              CustomTitle(),
+                              const CustomTitle(),
                               SizedBox(
                                 height: size.height * 0.01,
                               ),
-                              CustomPriceCounter(),
+                              const CustomPriceCounter(),
                               Text(
                                 "${databaseTranslate(controller.itemmodel!.itemsDecriptiomAr, controller.itemmodel!.itemsDescriptiom)}",
-                                style: TextStyle(fontSize: 16),
+                                style: const TextStyle(fontSize: 16),
                               ),
                               SizedBox(
                                 height: size.height * 0.035,
                               ),
-                              const Text(
-                                "Color",
-                                style: TextStyle(
+                              Text(
+                                "53".tr,
+                                style: const TextStyle(
                                   fontSize: 25,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -66,7 +65,7 @@ class itemdetails extends GetView<ImpitemdetailsController> {
                               SizedBox(
                                 height: size.height * 0.0125,
                               ),
-                              CustomBoxsColor()
+                              const CustomBoxsColor()
                             ],
                           ),
                         )

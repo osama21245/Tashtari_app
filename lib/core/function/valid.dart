@@ -7,11 +7,11 @@ validinput(String val, int min, int max, String type) {
     }
   }
 
-  if (type == "email") {
-    if (!GetUtils.isEmail(val)) {
-      return "is not a email";
-    }
-  }
+  // if (type == "email") {
+  //   if (!GetUtils.isEmail(val)) {
+  //     return "is not a email";
+  //   }
+  // }
 
   if (type == "phone") {
     if (!GetUtils.isPhoneNumber(val)) {

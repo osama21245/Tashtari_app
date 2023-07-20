@@ -46,19 +46,33 @@ dependencies:
   http: ^0.13.5
   dartz: ^0.10.1
   lottie: ^2.3.2
-  flutter_svg: ^2.0.5
+  flutter_svg: ^1.1.0
   cached_network_image: ^3.2.3
   dio: ^5.1.1
   rating_dialog: ^2.0.4
   flutter_ringtone_player: ^3.2.0
-
- 
+  firebase_auth: ^4.0.1
+  google_sign_in: '^5.4.2'
+  flutter_app_badger: ^1.5.0
+  rename: ^2.1.1
+  flutter_native_splash: ^2.3.1
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
 
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/tashtari-logo_app.png"
+  min_sdk_android: 21
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  android: true
+  image: assets/images/tashtari-logo_app_splash-removebg-preview.png
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

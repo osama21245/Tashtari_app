@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/HandlingDataView.dart';
 import 'package:woocommerce_app/controller/checkoutController.dart';
+import 'package:woocommerce_app/core/function/databaseTranslate.dart';
 
 import 'package:woocommerce_app/view/widget/checkout/customAddadress.dart';
 import 'package:woocommerce_app/view/widget/checkout/customCheckoutCard.dart';
@@ -22,7 +23,7 @@ class Checkout extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: GetBuilder<ImpcheckoutController>(
         builder: (c) => controller.dataAdress.isEmpty
-            ? customAddaddress()
+            ? const customAddaddress()
             : custombottomnavigitionCheckout(
                 onpressed: () {
                   controller.checkout();
@@ -32,91 +33,97 @@ class Checkout extends StatelessWidget {
       body: GetBuilder<ImpcheckoutController>(
           builder: (controller) => HandlingDataView(
               statusRequest: controller.statusRequest,
-              widget: ListView(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: CustomMyCheckouutText(
-                      textname: "Checkout",
+              widget: Padding(
+                padding: myservices.sharedPreferences.getString("lang") == "ar"
+                    ? const EdgeInsets.symmetric(horizontal: 23.0)
+                    : const EdgeInsets.only(right: 0.0),
+                child: ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: CustomMyCheckouutText(
+                        textname: "98".tr,
+                      ),
                     ),
-                  ),
-                  customtextCheckout(
-                    textname: "Choose Payment Method",
-                  ),
-                  customPaymentType(
-                    onpressed: () {
-                      controller.getpaymetval("cash");
-                    },
-                    textname: "Cash On Delivery",
-                    condetion: controller.paymentval == "cash" ? true : false,
-                  ),
-                  customPaymentType(
-                    onpressed: () {
-                      controller.getpaymetval("card");
-                    },
-                    textname: "Payment Card",
-                    condetion: controller.paymentval == "card" ? true : false,
-                  ),
-                  customtextCheckout(textname: "Choose Delivery Type"),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 18.0),
-                    child: Row(
-                      children: [
-                        customDeliverywayBox(
-                          onpressed: () {
-                            controller.getdeliveryval("delivery");
-                          },
-                          size: size,
-                          textname: "Delivery",
-                          imageurl: "assets/images/006-delivery.png",
-                          condetion: controller.deliveryval == "delivery"
-                              ? true
-                              : false,
-                        ),
-                        customDeliverywayBox(
-                          onpressed: () {
-                            controller.getdeliveryval("recive");
-                          },
-                          condetion:
-                              controller.deliveryval == "recive" ? true : false,
-                          textname: "recive",
-                          imageurl: "assets/images/drivethru.png",
-                          size: size,
-                        ),
-                      ],
+                    customtextCheckout(
+                      textname: "74".tr,
                     ),
-                  ),
-                  if (controller.deliveryval == "delivery")
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        customtextCheckout(textname: "Shipping Address"),
-                        ...List.generate(
-                          controller.dataAdress.length,
-                          (index) => InkWell(
-                            onTap: () {
-                              controller.getaddressval(controller
-                                  .dataAdress[index].addressId
-                                  .toString());
+                    customPaymentType(
+                      onpressed: () {
+                        controller.getpaymetval("cash");
+                      },
+                      textname: "75".tr,
+                      condetion: controller.paymentval == "cash" ? true : false,
+                    ),
+                    customPaymentType(
+                      onpressed: () {
+                        controller.getpaymetval("card");
+                      },
+                      textname: "76".tr,
+                      condetion: controller.paymentval == "card" ? true : false,
+                    ),
+                    customtextCheckout(textname: "77".tr),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Row(
+                        children: [
+                          customDeliverywayBox(
+                            onpressed: () {
+                              controller.getdeliveryval("delivery");
                             },
-                            child: customCheckoutCard(
-                              onpressed: () {},
-                              title:
-                                  "${controller.dataAdress[index].addressName}",
-                              subtitle:
-                                  "${controller.dataAdress[index].addressCity}" +
-                                      ". ${controller.dataAdress[index].addressStreet}",
-                              condetion: controller.addressval ==
-                                      controller.dataAdress[index].addressId
-                                          .toString()
-                                  ? true
-                                  : false,
-                            ),
+                            size: size,
+                            textname: "78".tr,
+                            imageurl: "assets/images/006-delivery.png",
+                            condetion: controller.deliveryval == "delivery"
+                                ? true
+                                : false,
                           ),
-                        )
-                      ],
-                    )
-                ],
+                          customDeliverywayBox(
+                            onpressed: () {
+                              controller.getdeliveryval("recive");
+                            },
+                            condetion: controller.deliveryval == "recive"
+                                ? true
+                                : false,
+                            textname: "79".tr,
+                            imageurl: "assets/images/drivethru.png",
+                            size: size,
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (controller.deliveryval == "delivery")
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          customtextCheckout(textname: "80".tr),
+                          ...List.generate(
+                            controller.dataAdress.length,
+                            (index) => InkWell(
+                              onTap: () {
+                                controller.getaddressval(controller
+                                    .dataAdress[index].addressId
+                                    .toString());
+                              },
+                              child: customCheckoutCard(
+                                onpressed: () {},
+                                title:
+                                    "${controller.dataAdress[index].addressName}",
+                                subtitle:
+                                    "${controller.dataAdress[index].addressCity}" +
+                                        ". ${controller.dataAdress[index].addressStreet}",
+                                condetion: controller.addressval ==
+                                        controller.dataAdress[index].addressId
+                                            .toString()
+                                    ? true
+                                    : false,
+                              ),
+                            ),
+                          )
+                        ],
+                      )
+                  ],
+                ),
               ))),
     );
   }

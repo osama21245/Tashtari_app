@@ -47,7 +47,6 @@ class ImpitemControoler extends itemControoler {
   search() async {
     statusRequest = StatusRequest.loading;
     var response = await homeData.search(search2!.text);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -68,7 +67,6 @@ class ImpitemControoler extends itemControoler {
     statusRequest = StatusRequest.loading;
     var response = await itmedata.getData(
         categoriesid, myservices.sharedPreferences.getString("id").toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {

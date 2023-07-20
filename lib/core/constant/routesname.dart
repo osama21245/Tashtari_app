@@ -24,4 +24,5 @@ class AppRoutes {
   static const Orderspending = "/Orderspending";
   static const OrdersDetails = "/OrdersDetails";
   static const Orderarchive = "/Orderarchive";
+  static const Notifications = "/Notifications";
 }

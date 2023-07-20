@@ -6,7 +6,7 @@ import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/archive_data.dart';
 import '../../data/model/orders_model.dart';
 
-class orderArchiveController extends GetxController {
+class OrderArchiveController extends GetxController {
   StatusRequest? statusRequest;
   ArchiveData ordersdata = ArchiveData(Get.find());
   List<OrdersModel> orderslist = [];
@@ -14,15 +14,16 @@ class orderArchiveController extends GetxController {
   MyServices myservices = Get.find();
 }
 
-class ImporderArchiveController extends orderArchiveController {
+class ImporderArchiveController extends OrderArchiveController {
+  // ignore: non_constant_identifier_names
   String ReturnorderStatus(String order) {
-    if (order == "0")
+    if (order == "0") {
       return "Await Approval";
-    else if (order == "1")
+    } else if (order == "1") {
       return "Prepare";
-    else if (order == "2")
+    } else if (order == "2") {
       return "On the way";
-    else {
+    } else {
       return "Archive";
     }
   }
@@ -32,7 +33,6 @@ class ImporderArchiveController extends orderArchiveController {
     update();
     var response = await ordersdata
         .getData(myservices.sharedPreferences.getString("id").toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -47,7 +47,6 @@ class ImporderArchiveController extends orderArchiveController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await ordersdata.rating(ordersid, rating, note);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {

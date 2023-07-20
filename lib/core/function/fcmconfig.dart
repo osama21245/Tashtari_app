@@ -18,12 +18,7 @@ requestPermissionNotification() async {
 }
 
 fcmconfig() {
-  print("hai =======================================================");
   FirebaseMessaging.onMessage.listen((message) {
-    print("================== Notification =================");
-    print(message.notification!.title);
-    print(message.notification!.body);
-
     FlutterRingtonePlayer.playNotification();
     Get.snackbar(message.notification!.title!, message.notification!.body!);
     refreshPageNotification(message.data);
@@ -31,10 +26,6 @@ fcmconfig() {
 }
 
 refreshPageNotification(data) {
-  print("============================= page name ");
-  print(data['pagename']);
-  print("================== Current Route");
-  print(Get.currentRoute);
   //Get.currentRoute == Orderspending
 
   if (Get.currentRoute == "/Orderspending" &&

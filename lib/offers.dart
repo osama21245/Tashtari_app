@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:woocommerce_app/controller/favouriteController.dart';
 import 'package:woocommerce_app/view/widget/offers/customOffersCard.dart';
 
 import 'HandlingDataView.dart';
@@ -11,7 +10,6 @@ class Offers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ImpfavourateController());
     Get.put(ImpoffersController());
     return GetBuilder<ImpoffersController>(
         builder: (controller) => HandlingDataView(

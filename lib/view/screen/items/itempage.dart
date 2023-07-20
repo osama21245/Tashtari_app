@@ -30,14 +30,14 @@ class item extends StatelessWidget {
           // return
           Container(
             decoration: katindex == iconList[i].category
-                ? BoxDecoration(
+                ? const BoxDecoration(
                     border: Border(
                         bottom:
                             BorderSide(width: 3, color: AppColor.primaryColor)))
                 : null,
             padding: EdgeInsets.all(10),
             child: Text(
-              "${iconList[i].category}",
+              iconList[i].category,
               style: const TextStyle(
                   fontSize: 16, color: Color.fromARGB(255, 44, 43, 43)),
             ),

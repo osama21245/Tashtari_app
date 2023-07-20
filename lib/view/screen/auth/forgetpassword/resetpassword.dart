@@ -24,13 +24,13 @@ class ResetPassword extends StatelessWidget {
           key: controller.formstate,
           child: ListView(children: [
             SizedBox(height: size.height * 0.04),
-            Text("Reset password",
+            Text("37".tr,
                 textAlign: TextAlign.center,
                 style:
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
                         .copyWith(color: Color.fromARGB(255, 138, 137, 138))),
             SizedBox(height: size.height * 0.015),
-            CustomTextBodyAuth(text: "Please Enter New Password"),
+            CustomTextBodyAuth(text: "38".tr),
             SizedBox(height: size.height * 0.07),
             GetBuilder<ImpresetpasswordController>(
               builder: (controller) => CustonTextFormAuth(
@@ -49,7 +49,7 @@ class ResetPassword extends StatelessWidget {
               ),
             ),
             CustomButtomAuth(
-                text: "Save",
+                text: "39".tr,
                 onPressed: () {
                   controller.ResetPassword();
                 }),

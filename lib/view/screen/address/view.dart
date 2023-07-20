@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:woocommerce_app/HandlingDataView.dart';
 import 'package:woocommerce_app/core/constant/routesname.dart';
 
-import '../../controller/address/viewController.dart';
-import '../../core/constant/color.dart';
-import '../../data/model/address_model.dart';
+import '../../../controller/address/viewController.dart';
+import '../../../core/constant/color.dart';
+import '../../../data/model/address_model.dart';
 
 class Address extends StatelessWidget {
   const Address({super.key});
@@ -15,14 +15,14 @@ class Address extends StatelessWidget {
     Get.put(ImpadressViewController());
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
         onPressed: () {
           Get.toNamed(AppRoutes.addressadd);
         },
         backgroundColor: AppColor.primaryColor,
       ),
       appBar: AppBar(
-        title: Text("Address"),
+        title: Text("91".tr),
         backgroundColor: AppColor.primaryColor,
       ),
       body: GetBuilder<ImpadressViewController>(

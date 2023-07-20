@@ -16,13 +16,23 @@ class CustombuttomNavigationbar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(20),
+          gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(125, 97, 208, 228),
+                AppColor.secoundColor,
+                AppColor.secoundColor,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              transform: GradientRotation(3.14 / 4)),
+        ),
         height: size.height * 0.05,
         width: size.width,
         child: MaterialButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           textColor: Colors.white,
-          color: AppColor.primaryColor,
           onPressed: onpressed,
           child: Text(buttonName),
         ),

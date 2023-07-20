@@ -6,7 +6,7 @@ import 'package:woocommerce_app/controller/onBoardingControoler.dart';
 import 'package:woocommerce_app/core/constant/color.dart';
 
 class CustomButtonOnBoarding extends GetView<onBoardingControllerImp> {
-  CustomButtonOnBoarding(this.size);
+  CustomButtonOnBoarding(this.size, {super.key});
 
   Size size;
   @override

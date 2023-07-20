@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../controller/orders/ordersarchiveController.dart';
 import '../../../../core/constant/color.dart';
@@ -34,53 +33,53 @@ class CustomcardArchive extends GetView<ImporderArchiveController> {
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 17),
                 child: Text("OrderNumber: #${orderModel.ordersId}",
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 24, 24, 24),
+                        color: Color.fromARGB(255, 24, 24, 24),
                         fontSize: 22)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Order Type : ${orderModel.ordersType == "0" ? "Delivery" : "Recive"} ",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Order Price Without coupon : ${orderModel.ordersPrice}\$",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Order Status : ${controller.ReturnorderStatus(orderModel.ordersStatus!)}",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Delivery Price : ${orderModel.ordersPricedelivery}\$",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Payment Method  : ${orderModel.ordersPaymenttype == "0" ? "Cash On Delivery" : "Payment Card"}",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
-              Divider(thickness: 2),
+              const Divider(thickness: 2),
               Row(
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 6.0),
                     child: Text(
                         "Total Price  : ${orderModel.ordersTotalprice}\$",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 17,
                             color: Color.fromARGB(255, 126, 71, 148))),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   MaterialButton(
                     textColor: Colors.white,
                     color: AppColor.primaryColor,
@@ -88,7 +87,7 @@ class CustomcardArchive extends GetView<ImporderArchiveController> {
                       Get.toNamed(AppRoutes.OrdersDetails,
                           arguments: {"details": orderModel});
                     },
-                    child: Text("Detials"),
+                    child: const Text("Detials"),
                   ),
                   SizedBox(
                     width: size.width * 0.01,
@@ -97,7 +96,7 @@ class CustomcardArchive extends GetView<ImporderArchiveController> {
                     textColor: Colors.white,
                     color: AppColor.primaryColor,
                     onPressed: onRating,
-                    child: Text("Rating"),
+                    child: const Text("Rating"),
                   ),
                 ],
               )

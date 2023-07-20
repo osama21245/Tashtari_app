@@ -9,6 +9,7 @@ import '../../../core/function/handlingdata.dart';
 import '../../../data/datasource/remote/resetpassword_data.dart';
 
 abstract class resetpasswordController extends GetxController {
+  // ignore: non_constant_identifier_names
   ResetPassword();
   changepass2();
   late TextEditingController password;
@@ -29,6 +30,7 @@ class ImpresetpasswordController extends resetpasswordController {
     update();
   }
 
+  @override
   changepass2() {
     showpassword2 = showpassword2 == true ? false : true;
     update();
@@ -38,7 +40,6 @@ class ImpresetpasswordController extends resetpasswordController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await resetpasswordData.getData(email!, password.text);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -55,6 +56,7 @@ class ImpresetpasswordController extends resetpasswordController {
     update();
   }
 
+  @override
   ResetPassword() {
     var Formdata = formstate.currentState;
     if (Formdata!.validate()) {

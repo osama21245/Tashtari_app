@@ -10,7 +10,7 @@ import '../data/datasource/remote/cart_data.dart';
 import '../data/model/coupon_model.dart';
 import '../data/model/cart_model.dart';
 
-abstract class cartController extends GetxController {
+abstract class CartController extends GetxController {
   StatusRequest statusRequest = StatusRequest.success;
   CartData cartdata = CartData(Get.find());
   MyServices myservices = Get.find();
@@ -31,7 +31,7 @@ abstract class cartController extends GetxController {
   TextEditingController? coponcode;
 }
 
-class ImpcartController extends cartController {
+class ImpcartController extends CartController {
   gotocheckout() {
     if (cartViewitems.isEmpty) return Get.snackbar("!", "No items in cart");
     Get.offNamed(AppRoutes.checkout, arguments: {
@@ -47,21 +47,21 @@ class ImpcartController extends cartController {
     var response = await cartdata.add(
         myservices.sharedPreferences.getString("id").toString(),
         itemsid.toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text(
-              "Your item has been add to cart",
+            duration: const Duration(seconds: 1),
+            title: "81".tr,
+            messageText: Text(
+              "82".tr,
               style: TextStyle(color: Colors.white),
             ));
       } else {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Error in Connection",
-                style: TextStyle(color: Colors.white)));
+            title: "81".tr,
+            messageText:
+                Text("86".tr, style: const TextStyle(color: Colors.white)));
         statusRequest = StatusRequest.failure;
       }
     }
@@ -74,19 +74,18 @@ class ImpcartController extends cartController {
     var response = await cartdata.delete(
         myservices.sharedPreferences.getString("id").toString(),
         itemsid.toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Your item has been deleted from cart",
-                style: TextStyle(color: Colors.white)));
+            duration: const Duration(seconds: 1),
+            title: "81".tr,
+            messageText:
+                Text("83".tr, style: const TextStyle(color: Colors.white)));
       } else {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Error in Connection",
-                style: TextStyle(color: Colors.white)));
+            title: "81".tr,
+            messageText: Text("86".tr, style: TextStyle(color: Colors.white)));
         statusRequest = StatusRequest.failure;
       }
     }
@@ -97,7 +96,6 @@ class ImpcartController extends cartController {
     statusRequest == StatusRequest.loading;
     update();
     var response = await cartdata.checkcoupon(coponcode!.text);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -129,12 +127,14 @@ class ImpcartController extends cartController {
     update();
   }
 
+  @override
   resetData() {
     totalpriceOfitem = 0.0;
     totalcount = 0;
     cartViewitems.clear();
   }
 
+  @override
   refreshpage() {
     resetData();
     view();
@@ -145,7 +145,6 @@ class ImpcartController extends cartController {
     update();
     var response = await cartdata
         .view(myservices.sharedPreferences.getString("id").toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {

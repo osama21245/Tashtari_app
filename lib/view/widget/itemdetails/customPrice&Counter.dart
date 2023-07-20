@@ -6,7 +6,7 @@ import '../../../controller/item/itemdetailsController.dart';
 import '../../../core/constant/color.dart';
 
 class CustomPriceCounter extends StatelessWidget {
-  CustomPriceCounter({
+  const CustomPriceCounter({
     super.key,
   });
 
@@ -26,7 +26,7 @@ class CustomPriceCounter extends StatelessWidget {
                       controller.counterdecress(
                           controller.itemmodel!.itemsId.toString());
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.remove,
                     ),
                   ),
@@ -34,8 +34,8 @@ class CustomPriceCounter extends StatelessWidget {
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
                       "${controller.counter2}",
-                      style:
-                          TextStyle(fontSize: 24, color: AppColor.primaryColor),
+                      style: const TextStyle(
+                          fontSize: 24, color: AppColor.primaryColor),
                     ),
                   ),
                   InkWell(
@@ -43,18 +43,18 @@ class CustomPriceCounter extends StatelessWidget {
                         controller.counterIncress(
                             controller.itemmodel!.itemsId.toString());
                       },
-                      child: Icon(Icons.add)),
+                      child: const Icon(Icons.add)),
                 ],
               );
             },
           ),
-          Spacer(),
+          const Spacer(),
           GetBuilder<ImpitemdetailsController>(
               builder: (controller) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
-                    "${controller.counter2 == 0 ? "add to see price" : "${controller.price2}"} \$",
-                    style: TextStyle(
+                    "${controller.counter2 == 0 ? "54".tr : "${controller.price2}"} \$",
+                    style: const TextStyle(
                       fontSize: 25,
                       color: AppColor.primaryColor,
                     ),

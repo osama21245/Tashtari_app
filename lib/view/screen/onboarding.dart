@@ -25,7 +25,7 @@ class OnBoarding extends StatelessWidget {
                   flex: 2,
                   child: Column(
                     children: [
-                      CustomDotControllerOnBoarding(),
+                      const CustomDotControllerOnBoarding(),
                       SizedBox(
                         height: size.height * 0.06,
                       ),

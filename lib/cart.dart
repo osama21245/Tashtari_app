@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/view/widget/cart/customCartButtonNavigationBar.dart';
 import '../../../linksApi.dart';
@@ -11,7 +10,7 @@ import 'view/widget/cart/customCatCard.dart';
 import 'view/widget/cart/customMyCartText.dart';
 
 class Cart extends StatelessWidget {
-  Cart({super.key});
+  const Cart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class Cart extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 12.0),
           child: CustomMycarText(
-            textname: "My Cart",
+            textname: "62".tr,
           ),
         ),
         GetBuilder<ImpcartController>(

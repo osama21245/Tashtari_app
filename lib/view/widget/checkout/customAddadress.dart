@@ -23,8 +23,8 @@ class customAddaddress extends StatelessWidget {
                 style: BorderStyle.solid),
             borderRadius: BorderRadius.circular(50),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
+          child: const Padding(
+            padding: EdgeInsets.all(15.0),
             child: Text(
               "There is no Address to add a New Address\n Click Here",
               style: TextStyle(

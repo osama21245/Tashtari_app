@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../HandlingDataView.dart';
-import '../../controller/address/addController.dart';
-import '../../core/constant/color.dart';
-import '../../core/function/valid.dart';
-import '../widget/auth/custombuttonauth.dart';
-import '../widget/auth/customtextformauth.dart';
+import '../../../HandlingDataView.dart';
+import '../../../controller/address/addController.dart';
+import '../../../core/constant/color.dart';
+import '../../../core/function/valid.dart';
+import '../../widget/auth/custombuttonauth.dart';
+import '../../widget/auth/customtextformauth.dart';
 
 class Addressadd extends StatelessWidget {
   const Addressadd({super.key});
@@ -16,7 +16,7 @@ class Addressadd extends StatelessWidget {
     Get.put(ImpadressAddController());
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add Address"),
+          title: Text("92".tr),
           backgroundColor: AppColor.primaryColor,
         ),
         body: GetBuilder<ImpadressAddController>(
@@ -37,9 +37,9 @@ class Addressadd extends StatelessWidget {
                                 return validinput(val!, 1, 100, "username");
                               },
                               mycontroller: controller.addresscity,
-                              hinttext: "City",
+                              hinttext: "93".tr,
                               iconData: Icons.location_city,
-                              labeltext: "City"
+                              labeltext: "93".tr
                               // mycontroller: ,
                               ),
                           CustonTextFormAuth(
@@ -47,9 +47,9 @@ class Addressadd extends StatelessWidget {
                                 return validinput(val!, 2, 100, "username");
                               },
                               mycontroller: controller.addressStreet,
-                              hinttext: "Street",
+                              hinttext: "94".tr,
                               iconData: Icons.streetview_outlined,
-                              labeltext: "Street"
+                              labeltext: "94".tr
                               // mycontroller: ,
                               ),
                           CustonTextFormAuth(
@@ -57,13 +57,13 @@ class Addressadd extends StatelessWidget {
                                 return validinput(val!, 1, 100, "username");
                               },
                               mycontroller: controller.addressname,
-                              hinttext: "Name",
+                              hinttext: "95".tr,
                               iconData: Icons.location_on_outlined,
-                              labeltext: "Name"
+                              labeltext: "95".tr
                               // mycontroller: ,
                               ),
                           CustomButtomAuth(
-                            text: "Add",
+                            text: "96".tr,
                             onPressed: () {
                               controller.AddCompleted();
                             },

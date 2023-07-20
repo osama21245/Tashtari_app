@@ -34,7 +34,8 @@ class Signup extends StatelessWidget {
                             style: const TextStyle(
                                     fontSize: 24, fontWeight: FontWeight.bold)
                                 .copyWith(
-                                    color: Color.fromARGB(255, 138, 137, 138))),
+                                    color: const Color.fromARGB(
+                                        255, 138, 137, 138))),
                         SizedBox(height: size.height * 0.05),
                         CustomTextBodyAuth(text: "8".tr),
                         SizedBox(height: size.height * 0.03),
@@ -102,7 +103,7 @@ class Signup extends StatelessWidget {
                                 controller.gotologin();
                               },
                               child: Text("7".tr,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: AppColor.primaryColor,
                                       fontWeight: FontWeight.bold)),
                             )

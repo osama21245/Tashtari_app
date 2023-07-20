@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:woocommerce_app/core/constant/color.dart';
 
 import '../../../controller/cartController.dart';
 
@@ -17,13 +18,28 @@ class CustomNuminCart extends GetView<ImpcartController> {
         alignment: Alignment.center,
         width: Get.width,
         height: size.height * 0.05,
-        child: Text(
-          "there is ${controller.totalcount} items in your cart",
-          style: TextStyle(color: Colors.grey),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "72".tr,
+              style: const TextStyle(color: Colors.grey),
+            ),
+            const SizedBox(
+              width: 4,
+            ),
+            Text("${controller.totalcount} ",
+                style: const TextStyle(
+                    color: AppColor.primaryColor, fontWeight: FontWeight.bold)),
+            const SizedBox(
+              width: 3,
+            ),
+            Text("73".tr, style: const TextStyle(color: Colors.grey))
+          ],
         ),
         decoration: BoxDecoration(
             color: Colors.purple[50],
-            borderRadius: BorderRadius.all(Radius.circular(30))),
+            borderRadius: const BorderRadius.all(Radius.circular(30))),
       ),
     );
   }

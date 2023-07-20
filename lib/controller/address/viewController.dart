@@ -7,7 +7,7 @@ import '../../core/constant/services/services.dart';
 import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/address_data.dart';
 
-class addressViewController extends GetxController {
+class AddressViewController extends GetxController {
   List<AddressModel> dataAdress = [];
 
   StatusRequest? statusRequest;
@@ -15,15 +15,13 @@ class addressViewController extends GetxController {
   MyServices myservices = Get.find();
 }
 
-class ImpadressViewController extends addressViewController {
+class ImpadressViewController extends AddressViewController {
   view() async {
     statusRequest = StatusRequest.loading;
     update();
-    print("=======");
     var response = await addressData.view(
       myservices.sharedPreferences.getString("id").toString(),
     );
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {

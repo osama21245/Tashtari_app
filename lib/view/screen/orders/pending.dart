@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/HandlingDataView.dart';
 
-import '../../controller/orders/orderspendingController.dart';
-import '../widget/checkout/customMyCheckoutText.dart';
-import '../widget/orders/pending/customcardPending.dart';
+import '../../../controller/orders/orderspendingController.dart';
+import '../../widget/checkout/customMyCheckoutText.dart';
+import '../../widget/orders/pending/customcardPending.dart';
 
 class Orderspending extends StatelessWidget {
   const Orderspending({super.key});

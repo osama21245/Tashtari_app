@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../core/constant/color.dart';
+import '../../../../core/constant/imgaeasset.dart';
 import '../../../../core/constant/routesname.dart';
 import '../../../widget/auth/custombuttonauth.dart';
 
@@ -10,42 +12,46 @@ class sucessResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColor.backgroundcolor,
-        elevation: 0.0,
-        title: Text('Succes',
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-                .copyWith(color: AppColor.grey)),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: SizedBox(
+            width: double.infinity,
+            child: CustomButtomAuth(
+                text: "40".tr,
+                onPressed: () {
+                  Get.offAllNamed(AppRoutes.login);
+                })),
       ),
       body: Container(
         padding: const EdgeInsets.all(15),
         child: ListView(children: [
-          const Center(
-              child: Icon(
-            Icons.check_circle_outline,
-            size: 200,
-            color: AppColor.primaryColor,
-          )),
-          SizedBox(height: size.height * 0.03),
-          const Padding(
-            padding: const EdgeInsets.only(left: 50, bottom: 30),
-            child: const Text(
-              "Your Email Has Been Created",
-              style: TextStyle(
-                  fontSize: 23, color: Color.fromARGB(255, 95, 78, 100)),
+          Center(
+              child: Padding(
+            padding: const EdgeInsets.only(top: 150, left: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "41".tr,
+                  style: const TextStyle(
+                      fontSize: 25, color: AppColor.primaryColor),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "42".tr,
+                  style: const TextStyle(
+                      fontSize: 16, color: AppColor.primaryColor),
+                ),
+                LottieBuilder.asset(
+                  AppImageAsset.done,
+                )
+              ],
             ),
-          ),
-          SizedBox(
-              width: double.infinity,
-              child: CustomButtomAuth(
-                  text: "Go To Login",
-                  onPressed: () {
-                    Get.offAllNamed(AppRoutes.login);
-                  })),
-          const SizedBox(height: 30)
+          )),
         ]),
       ),
     );

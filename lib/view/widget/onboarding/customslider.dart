@@ -7,7 +7,7 @@ import '../../../core/constant/color.dart';
 import '../../../data/datasource/static/static.dart';
 
 class CustomSliderOnBoarding extends GetView<onBoardingControllerImp> {
-  CustomSliderOnBoarding(this.size);
+  CustomSliderOnBoarding(this.size, {super.key});
   Size size;
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,9 @@ class CustomSliderOnBoarding extends GetView<onBoardingControllerImp> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   margin: EdgeInsets.only(left: size.width * 0.06),
-                  child: Text("${onBoardingList[i].title!}",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  child: Text(onBoardingList[i].title!,
+                      style: const TextStyle(
+                          fontSize: 24, fontWeight: FontWeight.bold)),
                 ),
               ),
               SizedBox(
@@ -39,7 +39,7 @@ class CustomSliderOnBoarding extends GetView<onBoardingControllerImp> {
               Container(
                 // margin: EdgeInsets.only(right: size.width * 0.1),
                 child: Image.asset(
-                  "${onBoardingList[i].image!}",
+                  onBoardingList[i].image!,
                   height: size.height * 0.23,
                   width: size.width * 0.5,
                   fit: BoxFit.fill,
@@ -49,9 +49,10 @@ class CustomSliderOnBoarding extends GetView<onBoardingControllerImp> {
                 height: size.height * 0.1,
               ),
               Text(
-                "${onBoardingList[i].body!}",
+                onBoardingList[i].body!,
                 textAlign: TextAlign.center,
-                style: TextStyle(height: 2, color: AppColor.grey, fontSize: 18),
+                style: const TextStyle(
+                    height: 2, color: AppColor.grey, fontSize: 18),
               )
             ],
           );

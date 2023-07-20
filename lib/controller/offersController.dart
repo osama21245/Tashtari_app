@@ -2,12 +2,13 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:woocommerce_app/core/class/statusrequest.dart';
 
+import '../core/constant/routesname.dart';
 import '../core/constant/services/services.dart';
 import '../core/function/handlingdata.dart';
 import '../data/datasource/remote/offers_data.dart';
 import '../data/model/item_model.dart';
 
-class offersController extends GetxController {
+class OffersController extends GetxController {
   OffersData offersData = OffersData(Get.find());
   Itemmodel? itemsmodel;
   List<Itemmodel> data = [];
@@ -17,12 +18,11 @@ class offersController extends GetxController {
   late StatusRequest statuesRequest;
 }
 
-class ImpoffersController extends offersController {
+class ImpoffersController extends OffersController {
   getData() async {
     statuesRequest = StatusRequest.loading;
     var response = await offersData
         .getData(myservices.sharedPreferences.getString("id").toString());
-    print("==================$response");
     statuesRequest = handlingData(response);
     if (statuesRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -35,11 +35,14 @@ class ImpoffersController extends offersController {
     update();
   }
 
+  gotoitemdetails(itemsmodel) {
+    Get.toNamed(AppRoutes.itemdetails, arguments: {"itemsmodel": itemsmodel});
+  }
+
   @override
   void onInit() {
     getData();
     delevirytime = myservices.sharedPreferences.getInt("deliverytime");
-    print(delevirytime);
 
     super.onInit();
   }

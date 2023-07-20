@@ -5,7 +5,7 @@ import 'package:woocommerce_app/controller/item/itemdetailsController.dart';
 import '../../../core/function/databaseTranslate.dart';
 
 class CustomTitle extends GetView<ImpitemdetailsController> {
-  CustomTitle({
+  const CustomTitle({
     super.key,
   });
 
@@ -13,7 +13,7 @@ class CustomTitle extends GetView<ImpitemdetailsController> {
   Widget build(BuildContext context) {
     return Text(
       "${databaseTranslate(controller.itemmodel!.itemsNameAr, controller.itemmodel!.itemsName)}",
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 26,
         fontWeight: FontWeight.bold,
       ),

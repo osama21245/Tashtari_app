@@ -8,6 +8,7 @@ import 'package:woocommerce_app/core/constant/services/services.dart';
 import '../../core/class/statusrequest.dart';
 import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/home_data.dart';
+import '../../data/datasource/remote/notification_data.dart';
 import '../../data/model/item_model.dart';
 
 abstract class homePageControoler extends GetxController {
@@ -25,6 +26,8 @@ abstract class homePageControoler extends GetxController {
   getData();
   gotoitem(List categories, int selectedkat, String catid);
   HomeData homeData = HomeData(Get.find());
+  NotificatinData notificatinData = NotificatinData(Get.find());
+  List notifications = [];
   String? langselected;
   MyServices myservices = Get.find();
   String? phone;
@@ -59,10 +62,10 @@ class ImphomePageControoler extends homePageControoler {
     });
   }
 
+  @override
   getData() async {
     statusRequest = StatusRequest.loading;
     var response = await homeData.getData();
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -75,7 +78,6 @@ class ImphomePageControoler extends homePageControoler {
         settingsDeliveryTime = int.parse(settings[0]["settings_deliverytime"]);
         myservices.sharedPreferences
             .setInt("deliverytime", settingsDeliveryTime);
-        print(settingsDeliveryTime);
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -83,10 +85,27 @@ class ImphomePageControoler extends homePageControoler {
     update();
   }
 
+  // getNotficationData() async {
+  //   notifications.clear();
+  //   print(myservices.sharedPreferences.getString("id"));
+  //   statusRequest = StatusRequest.loading;
+  //   var response = await notificatinData
+  //       .getData(myservices.sharedPreferences.getString("id"));
+  //   statusRequest = handlingData(response);
+  //   if (statusRequest == StatusRequest.success) {
+  //     if (response["status"] == "success") {
+  //       notifications = response["data"];
+  //       await FlutterAppBadger.updateBadgeCount(5);
+  //     } else {
+  //       statusRequest = StatusRequest.failure;
+  //     }
+  //   }
+  //   update();
+  // }
+
   search() async {
     statusRequest = StatusRequest.loading;
     var response = await homeData.search(search2!.text);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -115,6 +134,7 @@ class ImphomePageControoler extends homePageControoler {
     String? userid = myservices.sharedPreferences.getString("id");
     FirebaseMessaging.instance.subscribeToTopic("users");
     FirebaseMessaging.instance.subscribeToTopic("users${userid}");
+    // getNotficationData();
     print(id);
     getData();
     langselected = myservices.sharedPreferences.getString("lang");

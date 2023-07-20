@@ -8,7 +8,7 @@ import '../data/datasource/remote/address_data.dart';
 import '../data/datasource/remote/checkout_data.dart';
 import '../data/model/address_model.dart';
 
-class checkoutController extends GetxController {
+class CheckoutController extends GetxController {
   String paymentval = "";
 
   String deliveryval = "";
@@ -27,7 +27,7 @@ class checkoutController extends GetxController {
   late double priceBeforediscount;
 }
 
-class ImpcheckoutController extends checkoutController {
+class ImpcheckoutController extends CheckoutController {
   getpaymetval(String val) {
     paymentval = val;
     update();
@@ -56,16 +56,19 @@ class ImpcheckoutController extends checkoutController {
       F_valdelivery = 1;
     }
 
-    if (paymentval == "")
+    if (paymentval == "") {
       return Get.defaultDialog(
           title: "Warning", middleText: "Please enter payment details");
-    if (deliveryval == "")
+    }
+    if (deliveryval == "") {
       return Get.defaultDialog(
           title: "Warning", middleText: "Please enter delivery details");
+    }
     if (F_valdelivery == 0) {
-      if (addressval == "" || addressval == "0")
+      if (addressval == "" || addressval == "0") {
         return Get.defaultDialog(
             title: "Warning", middleText: "Please enter address details");
+      }
     }
 
     statusRequest = StatusRequest.loading;
@@ -80,7 +83,6 @@ class ImpcheckoutController extends checkoutController {
         finalprice.toString(),
         couponid.toString(),
         priceBeforediscount.toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -101,7 +103,6 @@ class ImpcheckoutController extends checkoutController {
     var response = await addressData.view(
       myservices.sharedPreferences.getString("id").toString(),
     );
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {

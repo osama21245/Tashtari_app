@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constant/imgaeasset.dart';
 import '../../model/onboarding_model.dart';

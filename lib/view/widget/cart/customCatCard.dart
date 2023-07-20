@@ -51,12 +51,12 @@ class CustomCartCard extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 5.0),
                         child: Text(
                           price,
-                          style: TextStyle(color: AppColor.primaryColor),
+                          style: const TextStyle(color: AppColor.primaryColor),
                         ),
                       ),
                       title: Text(
                         name,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 19,
                             fontFamily: "PlayfairDisplay",
                             fontWeight: FontWeight.w700),
@@ -66,9 +66,10 @@ class CustomCartCard extends StatelessWidget {
                     flex: 2,
                     child: Column(
                       children: [
-                        IconButton(onPressed: add, icon: Icon(Icons.add)),
+                        IconButton(onPressed: add, icon: const Icon(Icons.add)),
                         Text(count),
-                        IconButton(onPressed: remove, icon: Icon(Icons.remove))
+                        IconButton(
+                            onPressed: remove, icon: const Icon(Icons.remove))
                       ],
                     ))
               ],

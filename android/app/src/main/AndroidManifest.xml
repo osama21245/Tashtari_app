@@ -6,7 +6,7 @@
     <!-- Place inside the <queries> element. -->
 
    <application
-        android:label="woocommerce_app"
+        android:label="Tashtari"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

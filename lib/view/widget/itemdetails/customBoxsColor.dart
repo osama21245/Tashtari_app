@@ -30,8 +30,10 @@ class CustomBoxsColor extends StatelessWidget {
                           ? AppColor.secoundColor
                           : Colors.white,
                       border: Border.all(
-                          width: 2, color: Color.fromARGB(255, 119, 117, 117)),
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                          width: 2,
+                          color: const Color.fromARGB(255, 119, 117, 117)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
                   child: Text(
                     "purble",
                     style: TextStyle(
@@ -60,8 +62,10 @@ class CustomBoxsColor extends StatelessWidget {
                           ? AppColor.secoundColor
                           : Colors.white,
                       border: Border.all(
-                          width: 2, color: Color.fromARGB(255, 119, 117, 117)),
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                          width: 2,
+                          color: const Color.fromARGB(255, 119, 117, 117)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
                   child: Text(
                     "blue",
                     style: TextStyle(
@@ -90,8 +94,10 @@ class CustomBoxsColor extends StatelessWidget {
                           ? AppColor.secoundColor
                           : Colors.white,
                       border: Border.all(
-                          width: 2, color: Color.fromARGB(255, 119, 117, 117)),
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                          width: 2,
+                          color: const Color.fromARGB(255, 119, 117, 117)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
                   child: Text(
                     "Red",
                     style: TextStyle(

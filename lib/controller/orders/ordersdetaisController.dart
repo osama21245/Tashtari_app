@@ -5,7 +5,7 @@ import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/ordersDetails_data.dart';
 import '../../data/model/orders_model.dart';
 
-class ordersdetailsController extends GetxController {
+class OrdersdetailsController extends GetxController {
   OrdersModel? ordersModel;
   OrdersDetailsData ordersData = OrdersDetailsData(Get.find());
   StatusRequest? statusRequest;
@@ -13,7 +13,7 @@ class ordersdetailsController extends GetxController {
   List? data;
 }
 
-class ImpordersdetailsController extends ordersdetailsController {
+class ImpordersdetailsController extends OrdersdetailsController {
   getData() async {
     statusRequest = StatusRequest.loading;
     update();

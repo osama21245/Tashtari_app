@@ -60,14 +60,14 @@ class Categories extends GetView<ImpitemControoler> {
               child: GetBuilder<ImpitemControoler>(
                 builder: (c) {
                   return Container(
-                    padding: EdgeInsets.only(bottom: 3),
+                    padding: const EdgeInsets.only(bottom: 3),
                     decoration: controller.selectedkat == i
-                        ? BoxDecoration(
+                        ? const BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
                                     width: 3,
                                     color: Color.fromARGB(255, 212, 178, 226))))
-                        : BoxDecoration(),
+                        : const BoxDecoration(),
                     child: Text(
                       "${databaseTranslate(categoriesmodel.categoriesNameAr, categoriesmodel.categoriesName)}",
                       style: TextStyle(
@@ -82,27 +82,3 @@ class Categories extends GetView<ImpitemControoler> {
     );
   }
 }
- // return InkWell(
-          //   onTap: () {},
-          //   child: ListView(
-          //     children: [
-          //       SizedBox(
-          //         height: size.height * 0.005,
-          //       ),
-          //       Container(
-          //         decoration: controller.selectedkat == i
-          //             ? BoxDecoration(
-          //                 border: Border(
-          //                     bottom: BorderSide(
-          //                         width: 3, color: AppColor.primaryColor)))
-          //             : BoxDecoration(border: Border()),
-          //         padding: EdgeInsets.all(10),
-          //         child: Text(
-          //           "${iconList[index].category}",
-          //           style: const TextStyle(
-          //               fontSize: 16, color: Color.fromARGB(255, 44, 43, 43)),
-          //         ),
-          //       )
-          //     ],
-          //   ),
-          // );

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/view/screen/home/homepage.dart';
 
+import '../../notifications.dart';
 import '../../offers.dart';
 import '../../settings.dart';
 
+// ignore: camel_case_types
 abstract class homePageMainController extends GetxController {
   changePage(int currentpage);
 }
@@ -14,21 +16,11 @@ class ImphomePageMainController extends homePageMainController {
 
   List<Widget> listpage = [
     const Home(),
-    Settings(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text(
-            "28".tr,
-            style: TextStyle(color: Colors.black),
-          ),
-        )
-      ],
-    ),
-    Offers()
+    const Settings(),
+    const Notifications(),
+    const Offers()
   ];
-  List titlebottomappbar = ["27".tr, "28".tr, "Notfication".tr, "Offers"];
+  List titlebottomappbar = ["27".tr, "28".tr, "50".tr, "51".tr];
 
   List<IconData> iconbottomappbar = [
     Icons.home_outlined,
@@ -37,6 +29,8 @@ class ImphomePageMainController extends homePageMainController {
     Icons.local_offer_outlined
   ];
 
+  @override
+  // ignore: avoid_renaming_method_parameters
   changePage(int i) {
     currentpage = i;
 

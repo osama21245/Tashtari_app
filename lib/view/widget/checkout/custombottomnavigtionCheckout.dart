@@ -12,7 +12,7 @@ class custombottomnavigitionCheckout extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
       child: MaterialButton(
         onPressed: onpressed,
-        child: Text("Checkout"),
+        child: const Text("Checkout"),
         color: AppColor.primaryColor,
         textColor: Colors.white,
       ),

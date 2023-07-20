@@ -9,6 +9,7 @@ import '../../widget/auth/custombuttonauth.dart';
 import '../../widget/auth/customtextbodyauth.dart';
 import '../../widget/auth/customtextformauth.dart';
 import '../../widget/auth/logoauth.dart';
+//import 'package:auth_buttons/auth_buttons.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ImploginController controller = Get.put(ImploginController());
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         body: HandlingDataView(
@@ -31,14 +33,14 @@ class Login extends StatelessWidget {
                     SizedBox(
                       height: size.height * 0.04,
                     ),
-                    LogoAuth(),
+                    const LogoAuth(),
                     SizedBox(height: size.height * 0.04),
                     Text('7'.tr,
                         textAlign: TextAlign.center,
-                        style:
-                            TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-                                .copyWith(
-                                    color: Color.fromARGB(255, 138, 137, 138))),
+                        style: const TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold)
+                            .copyWith(
+                                color: Color.fromARGB(255, 138, 137, 138))),
                     SizedBox(height: size.height * 0.03),
                     CustomTextBodyAuth(text: "8".tr),
                     SizedBox(height: size.height * 0.03),
@@ -85,7 +87,7 @@ class Login extends StatelessWidget {
                         onPressed: () {
                           controller.login();
                         }),
-                    SizedBox(height: size.height * 0.05),
+                    SizedBox(height: size.height * 0.03),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

@@ -13,7 +13,7 @@ class customtextCheckout extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20.0, top: 27, bottom: 11),
       child: Text(
         textname,
-        style: TextStyle(
+        style: const TextStyle(
             color: AppColor.primaryColor,
             fontSize: 20,
             fontWeight: FontWeight.bold,

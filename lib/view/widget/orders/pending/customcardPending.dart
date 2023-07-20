@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../../../controller/orders/orderspendingController.dart';
 import '../../../../core/constant/color.dart';
@@ -34,72 +33,89 @@ class CustomcardPending extends GetView<ImporderspendingController> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, bottom: 17),
-                child: Text("OrderNumber: #${orderModel.ordersId}",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: const Color.fromARGB(255, 24, 24, 24),
-                        fontSize: 22)),
+                child: Row(
+                  children: [
+                    Text("OrderNumber: #${orderModel.ordersId}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: const Color.fromARGB(255, 24, 24, 24),
+                            fontSize: 22)),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: Text(
+                        "${orderModel.ordersDatetime}",
+                        style: const TextStyle(
+                            fontSize: 9,
+                            color: AppColor.primaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Order Type : ${orderModel.ordersType == "0" ? "Delivery" : "Recive"} ",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Order Price without coupon : ${orderModel.ordersPrice}\$",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Order Status : ${controller.ReturnorderStatus(orderModel.ordersStatus!)}",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Delivery Price : ${orderModel.ordersPricedelivery}\$",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 6.0),
                 child: Text(
                     "Payment Method  : ${orderModel.ordersPaymenttype == "0" ? "Cash On Delivery" : "Payment Card"}",
-                    style: TextStyle(fontSize: 16)),
+                    style: const TextStyle(fontSize: 16)),
               ),
-              Divider(thickness: 2),
+              const Divider(thickness: 2),
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6.0),
+                    padding: const EdgeInsets.symmetric(vertical: 2.0),
                     child: Text(
                         "Total Price  : ${orderModel.ordersTotalprice}\$",
-                        style: TextStyle(
-                            fontSize: 17,
+                        style: const TextStyle(
+                            fontSize: 14,
                             color: Color.fromARGB(255, 126, 71, 148))),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   MaterialButton(
+                    minWidth: size.width * 0.12,
                     textColor: Colors.white,
                     color: AppColor.primaryColor,
                     onPressed: () {
                       Get.toNamed(AppRoutes.OrdersDetails,
                           arguments: {"details": orderModel});
                     },
-                    child: Text("Detials"),
+                    child: const Text("Detials"),
                   ),
                   SizedBox(
                     width: size.width * 0.02,
                   ),
                   if (orderModel.ordersStatus == "0")
                     MaterialButton(
+                      minWidth: size.width * 0.1,
                       textColor: Colors.white,
                       color: AppColor.primaryColor,
                       onPressed: ondelete,
-                      child: Text("Remove"),
+                      child: const Text("Remove"),
                     )
                 ],
               )

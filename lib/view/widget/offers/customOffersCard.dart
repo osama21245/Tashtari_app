@@ -4,14 +4,12 @@ import 'package:get/get.dart';
 import 'package:woocommerce_app/controller/offersController.dart';
 import 'package:woocommerce_app/data/model/item_model.dart';
 
-import '../../../../controller/favouriteController.dart';
-import '../../../../controller/item/itemControoler.dart';
 import '../../../../core/constant/color.dart';
 import '../../../../core/function/databaseTranslate.dart';
 import '../../../../linksApi.dart';
 
 // ignore: must_be_immutable
-class CustomOffersCard extends GetView<ImpitemControoler> {
+class CustomOffersCard extends GetView<ImpoffersController> {
   Itemmodel itemmodel;
 
   CustomOffersCard({
@@ -44,7 +42,7 @@ class CustomOffersCard extends GetView<ImpitemControoler> {
                       height: size.height * 0.15,
                       fit: BoxFit.fill,
                       imageUrl:
-                          Apilinks.linkimageItems + "/" + itemmodel.itemsImage!,
+                          "${Apilinks.linkimageItems}/${itemmodel.itemsImage!}",
                     ),
                   ),
                   Text(
@@ -63,10 +61,15 @@ class CustomOffersCard extends GetView<ImpitemControoler> {
                     children: [
                       const Icon(Icons.timer_outlined),
                       Text(
-                          "${controlleroffer.delevirytime} - ${controlleroffer.delevirytime! + 10} minutes",
+                          "${controlleroffer.delevirytime} - ${controlleroffer.delevirytime! + 10}",
                           style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 16,
+                              fontWeight: FontWeight.bold)),
+                      Text("100".tr,
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 13,
                               fontWeight: FontWeight.bold))
                     ],
                   ),
@@ -77,6 +80,7 @@ class CustomOffersCard extends GetView<ImpitemControoler> {
                         children: [
                           Text(
                             "${itemmodel.itemspricediscount} \$",
+                            // ignore: unrelated_type_equality_checks
                             style: itemmodel.itemsDiscount == 0
                                 ? const TextStyle(
                                     color: AppColor.primaryColor,
@@ -87,6 +91,7 @@ class CustomOffersCard extends GetView<ImpitemControoler> {
                                     fontWeight: FontWeight.bold,
                                     fontSize: 21),
                           ),
+                          // ignore: unrelated_type_equality_checks
                           if (itemmodel.itemsDiscount != 0)
                             Padding(
                               padding:
@@ -102,37 +107,12 @@ class CustomOffersCard extends GetView<ImpitemControoler> {
                             )
                         ],
                       ),
-                      GetBuilder<ImpfavourateController>(
-                          builder: (controller) => IconButton(
-                              onPressed: () {
-                                if (controller.isFavorite[itemmodel.itemsId] ==
-                                    1) {
-                                  controller.setfavorite(itemmodel.itemsId, 0);
-                                  controller.deletefromfav(
-                                      itemmodel.itemsId.toString());
-                                } else if (controller
-                                        .isFavorite[itemmodel.itemsId] ==
-                                    0) {
-                                  controller.setfavorite(itemmodel.itemsId, 1);
-                                  controller
-                                      .addtofav(itemmodel.itemsId.toString());
-                                }
-                              },
-                              icon:
-                                  controller.isFavorite[itemmodel.itemsId] == 1
-                                      ? const Icon(
-                                          Icons.favorite,
-                                          color: AppColor.primaryColor,
-                                        )
-                                      : const Icon(
-                                          Icons.favorite_outline,
-                                          color: AppColor.primaryColor,
-                                        )))
                     ],
                   ),
                 ],
               ),
             ),
+            // ignore: unrelated_type_equality_checks
             if (itemmodel.itemsDiscount != 0)
               Image.asset(
                 "assets/images/001-sale.png",

@@ -17,10 +17,10 @@ class signupVerifyCode extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: ListView(children: [
           SizedBox(height: size.height * 0.04),
-          Text("Verify code",
+          Text("36".tr,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
-                  .copyWith(color: Color.fromARGB(255, 138, 137, 138))),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)
+                  .copyWith(color: const Color.fromARGB(255, 138, 137, 138))),
           SizedBox(height: size.height * 0.02),
           GetBuilder<ImpsignupVerifycodeController>(
               builder: (controller) => CustomTextBodyAuth(
@@ -30,16 +30,14 @@ class signupVerifyCode extends StatelessWidget {
             borderWidth: 3,
             fieldWidth: size.width * 0.14,
             numberOfFields: 5,
-            borderColor: Color.fromARGB(255, 0, 0, 0),
+            borderColor: const Color.fromARGB(255, 0, 0, 0),
             //set to true to show as box or false to show as dash
             showFieldAsBox: true,
             //runs when a code is typed in
-            onCodeChanged: (String code) {
-              //handle validation or checks here
-            },
+            onCodeChanged: (String code) {},
             //runs when every textfield is filled
             onSubmit: (String verificationCode) {
-              controller..gotoSuccesSignUp();
+              controller.getData(verificationCode);
             }, // end onSubmit
           ),
         ]),

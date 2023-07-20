@@ -34,9 +34,7 @@ class Checkemail extends StatelessWidget {
                                 color:
                                     const Color.fromARGB(255, 138, 137, 138))),
                     SizedBox(height: size.height * 0.02),
-                    const CustomTextBodyAuth(
-                        text:
-                            "please Enter Your Email Adress To Recive a Verify code"),
+                    CustomTextBodyAuth(text: "34".tr),
                     SizedBox(height: size.height * 0.05),
                     CustonTextFormAuth(
                       valid: (val) {

@@ -37,7 +37,7 @@ class customCheckoutCard extends StatelessWidget {
             title: Text(
               title,
               style: condetion == true
-                  ? TextStyle(
+                  ? const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     )
@@ -45,7 +45,9 @@ class customCheckoutCard extends StatelessWidget {
             ),
             subtitle: Text(
               subtitle,
-              style: condetion == true ? TextStyle(color: Colors.white) : null,
+              style: condetion == true
+                  ? const TextStyle(color: Colors.white)
+                  : null,
             ),
           ),
         ),

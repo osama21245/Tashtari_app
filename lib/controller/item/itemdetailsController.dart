@@ -9,7 +9,7 @@ import '../../data/datasource/remote/cart_data.dart';
 import '../../data/model/item_model.dart';
 import '../cartController.dart';
 
-class itemdetailsController extends GetxController {
+class ItemdetailsController extends GetxController {
   Itemmodel? itemmodel;
   late StatusRequest statusRequest;
   int? counter2 = 0;
@@ -27,7 +27,7 @@ class itemdetailsController extends GetxController {
   changestate(int i) {}
 }
 
-class ImpitemdetailsController extends itemdetailsController {
+class ImpitemdetailsController extends ItemdetailsController {
   @override
   gotocart() {
     Get.toNamed(AppRoutes.cart);
@@ -39,39 +39,40 @@ class ImpitemdetailsController extends itemdetailsController {
     update();
   }
 
+  @override
   changeprice(price) {
     price2 = (int.parse(itemmodel!.itemsPrice!) * counter2!);
     update();
   }
 
+  @override
   counterIncress(String itemsid) async {
     statusRequest = StatusRequest.loading;
     update();
     var response = await cartdata.add(
         myservices.sharedPreferences.getString("id").toString(),
         itemsid.toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text(
-              "Your item has been add to cart",
-              style: TextStyle(color: Colors.white),
+            duration: const Duration(seconds: 1),
+            title: "81".tr,
+            messageText: Text(
+              "82".tr,
+              style: const TextStyle(color: Colors.white),
             ));
       } else {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Error in Connection",
-                style: TextStyle(color: Colors.white)));
+            title: "81".tr,
+            messageText:
+                Text("86".tr, style: const TextStyle(color: Colors.white)));
         statusRequest = StatusRequest.failure;
       }
     }
 
     counter2 = (counter2! + 1);
     changeprice(int.parse(itemmodel!.itemsPrice!));
-    print(price2);
 
     update();
   }
@@ -82,7 +83,6 @@ class ImpitemdetailsController extends itemdetailsController {
     var response = await cartdata.countitem(
         myservices.sharedPreferences.getString("id").toString(),
         itemmodel!.itemsId.toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       counter2 = int.parse(response['data']);
@@ -99,19 +99,19 @@ class ImpitemdetailsController extends itemdetailsController {
       var response = await cartdata.delete(
           myservices.sharedPreferences.getString("id").toString(),
           itemsid.toString());
-      print("==================$response");
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
           Get.rawSnackbar(
-              title: "Notfication",
-              messageText: const Text("Your item has been deleted from cart",
-                  style: TextStyle(color: Colors.white)));
+              duration: const Duration(seconds: 1),
+              title: "81".tr,
+              messageText:
+                  Text("83".tr, style: const TextStyle(color: Colors.white)));
         } else {
           Get.rawSnackbar(
-              title: "Notfication",
-              messageText: const Text("Error in Connection",
-                  style: TextStyle(color: Colors.white)));
+              title: "81".tr,
+              messageText:
+                  Text("86".tr, style: const TextStyle(color: Colors.white)));
           statusRequest = StatusRequest.failure;
         }
       }
@@ -119,7 +119,6 @@ class ImpitemdetailsController extends itemdetailsController {
       counter2 = (counter2! - 1);
 
       changeprice(int.parse(itemmodel!.itemspricediscount!));
-      print(price2);
     }
 
     update();
@@ -139,7 +138,6 @@ class ImpitemdetailsController extends itemdetailsController {
   void onInit() {
     itemmodel = Get.arguments["itemsmodel"];
     price2 = int.parse(itemmodel!.itemspricediscount!);
-    print(itemmodel!.itemspricediscount!);
     initialData();
     super.onInit();
   }

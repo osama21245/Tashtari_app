@@ -19,13 +19,13 @@ class CustomMycarText extends StatelessWidget {
           children: [
             Text(
               textname,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 34,
                   fontFamily: "PlayfairDisplay",
                   color: Color.fromARGB(255, 129, 129, 129),
                   fontWeight: FontWeight.w700),
             ),
-            Icon(
+            const Icon(
               Icons.shopping_cart,
               color: Color.fromARGB(255, 129, 129, 129),
             )

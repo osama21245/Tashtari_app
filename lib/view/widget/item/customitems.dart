@@ -37,11 +37,15 @@ class Customitems extends GetView<ImpitemControoler> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20),
-                    child: CachedNetworkImage(
-                      height: size.height * 0.15,
-                      fit: BoxFit.fill,
-                      imageUrl:
-                          Apilinks.linkimageItems + "/" + itemmodel.itemsImage!,
+                    child: Hero(
+                      tag: "${itemmodel.itemsId}",
+                      child: CachedNetworkImage(
+                        height: size.height * 0.15,
+                        fit: BoxFit.fill,
+                        imageUrl: Apilinks.linkimageItems +
+                            "/" +
+                            itemmodel.itemsImage!,
+                      ),
                     ),
                   ),
                   Text(
@@ -50,7 +54,7 @@ class Customitems extends GetView<ImpitemControoler> {
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontFamily: "PlayfairDisplay",
-                      fontSize: 16,
+                      fontSize: 14,
                     ),
                   ),
                   SizedBox(
@@ -58,12 +62,17 @@ class Customitems extends GetView<ImpitemControoler> {
                   ),
                   Row(
                     children: [
-                      Icon(Icons.timer_outlined),
+                      const Icon(Icons.timer_outlined),
                       Text(
-                          "${controller.delevirytime} - ${controller.delevirytime! + 10} minutes",
+                          "${controller.delevirytime} - ${controller.delevirytime! + 10} ",
+                          style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold)),
+                      Text("100".tr,
                           style: TextStyle(
                               color: Colors.grey,
-                              fontSize: 16,
+                              fontSize: 13,
                               fontWeight: FontWeight.bold))
                     ],
                   ),
@@ -78,23 +87,23 @@ class Customitems extends GetView<ImpitemControoler> {
                                 ? const TextStyle(
                                     color: AppColor.primaryColor,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 21)
+                                    fontSize: 17)
                                 : const TextStyle(
                                     color: AppColor.primaryColor,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 21),
+                                    fontSize: 17),
                           ),
                           if (itemmodel.itemsDiscount != "0")
                             Padding(
                               padding:
-                                  const EdgeInsets.only(top: 27.0, left: 2),
+                                  const EdgeInsets.only(top: 27.0, left: 0),
                               child: Text(
                                 "${itemmodel.itemsPrice}",
                                 style: const TextStyle(
                                     decoration: TextDecoration.lineThrough,
                                     color: AppColor.primaryColor,
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 15),
+                                    fontSize: 9),
                               ),
                             )
                         ],

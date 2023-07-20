@@ -8,7 +8,7 @@ import '../../core/class/statusrequest.dart';
 import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/signup_data.dart';
 
-abstract class signupController extends GetxController {
+abstract class SignupController extends GetxController {
   signup();
   gotohome();
   gotologin();
@@ -20,7 +20,7 @@ abstract class signupController extends GetxController {
   SignupData signupdata = SignupData(Get.find());
 }
 
-class ImpsignupController extends signupController {
+class ImpsignupController extends SignupController {
   @override
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   bool showpassword = true;

@@ -1,8 +1,10 @@
 // ignore_for_file: override_on_non_overriding_member, unused_local_variable
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:woocommerce_app/core/constant/routesname.dart';
 import 'package:woocommerce_app/data/datasource/remote/login_data.dart';
 
@@ -10,7 +12,7 @@ import '../../core/class/statusrequest.dart';
 import '../../core/constant/services/services.dart';
 import '../../core/function/handlingdata.dart';
 
-abstract class loginController extends GetxController {
+abstract class LoginController extends GetxController {
   login();
   gotosignup();
   gotocheckemail();
@@ -19,12 +21,34 @@ abstract class loginController extends GetxController {
   late StatusRequest statusRequest;
   LoginData logindata = LoginData(Get.find());
   MyServices myservices = Get.find();
+  late GoogleSignInAccount? googleUser;
 }
 
-class ImploginController extends loginController {
+class ImploginController extends LoginController {
   @override
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   bool showpassword = true;
+
+  googlesignin() async {
+    await GoogleSignIn().signIn().then((value) {
+      googleUser = value;
+      // myservices.sharedPreferences.setString("id", googleUser!.id);
+      // update();
+      // Get.offAllNamed(AppRoutes.homemain);
+    });
+    // final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // final GoogleSignInAuthentication? googleAuth =
+    //     await googleUser?.authentication;
+
+    // final credential = GoogleAuthProvider.credential(
+    //   accessToken: googleAuth?.accessToken,
+    //   idToken: googleAuth?.idToken,
+    // );
+
+    // Once signed in, return the UserCredential
+    // return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
 
   changepass() {
     showpassword = showpassword == true ? false : true;
@@ -64,6 +88,7 @@ class ImploginController extends loginController {
     update();
   }
 
+  @override
   gotocheckemail() {
     Get.offNamed(AppRoutes.checkemail);
   }
@@ -78,10 +103,7 @@ class ImploginController extends loginController {
     var Formdata = formstate.currentState;
     if (Formdata!.validate()) {
       getData();
-      print("Vaild");
-    } else {
-      print("not valid");
-    }
+    } else {}
   }
 
   @override

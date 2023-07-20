@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/HandlingDataView.dart';
 
-import '../../controller/orders/ordersarchiveController.dart';
+import '../../../controller/orders/ordersarchiveController.dart';
 
-import '../widget/checkout/customMyCheckoutText.dart';
-import '../widget/orders/archive/customRatingDialog.dart';
-import '../widget/orders/archive/customcardArchive.dart';
+import '../../widget/checkout/customMyCheckoutText.dart';
+import '../../widget/orders/archive/customRatingDialog.dart';
+import '../../widget/orders/archive/customcardArchive.dart';
 
 class Orderarchive extends StatelessWidget {
   const Orderarchive({super.key});

@@ -40,7 +40,7 @@ class Customsearech extends StatelessWidget {
                   fontFamily: "PlayfairDisplay",
                   color:
                       myServices.sharedPreferences.getBool("isDarkMode") == true
-                          ? Color.fromARGB(255, 245, 244, 244)
+                          ? const Color.fromARGB(255, 245, 244, 244)
                           : null),
               border: OutlineInputBorder(
                   borderSide: BorderSide.none,
@@ -48,7 +48,7 @@ class Customsearech extends StatelessWidget {
               filled: true,
               fillColor:
                   myServices.sharedPreferences.getBool("isDarkMode") == true
-                      ? Color.fromARGB(255, 153, 152, 152)
+                      ? const Color.fromARGB(255, 153, 152, 152)
                       : Colors.grey[200]),
         )),
         if (apperFavandNot == true) const SizedBox(width: 10),
@@ -57,31 +57,10 @@ class Customsearech extends StatelessWidget {
             decoration: BoxDecoration(
                 color:
                     myServices.sharedPreferences.getBool("isDarkMode") == true
-                        ? Color.fromARGB(255, 153, 152, 152)
+                        ? const Color.fromARGB(255, 153, 152, 152)
                         : Colors.grey[200],
                 borderRadius: BorderRadius.circular(10)),
-            width: 60,
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.notifications_active_outlined,
-                  size: 30,
-                  color:
-                      myServices.sharedPreferences.getBool("isDarkMode") == true
-                          ? Color.fromARGB(255, 226, 225, 225)
-                          : Colors.grey[600],
-                )),
-          ),
-        if (apperFavandNot == true) const SizedBox(width: 10),
-        if (apperFavandNot == true)
-          Container(
-            decoration: BoxDecoration(
-                color:
-                    myServices.sharedPreferences.getBool("isDarkMode") == true
-                        ? Color.fromARGB(255, 153, 152, 152)
-                        : Colors.grey[200],
-                borderRadius: BorderRadius.circular(10)),
+            height: 67,
             width: 60,
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: IconButton(
@@ -91,7 +70,7 @@ class Customsearech extends StatelessWidget {
                   size: 30,
                   color:
                       myServices.sharedPreferences.getBool("isDarkMode") == true
-                          ? Color.fromARGB(255, 226, 225, 225)
+                          ? const Color.fromARGB(255, 226, 225, 225)
                           : Colors.grey[600],
                 )),
           )

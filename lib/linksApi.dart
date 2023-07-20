@@ -8,11 +8,20 @@ class Apilinks {
 //===================== Auth ==================
   static const String linksignup = "$linskServerName/auth/signup.php";
   static const String linkslogin = "$linskServerName/auth/login.php";
+  static const String linksverifycode = "$linskServerName/auth/verifycode.php";
+  static const String linksReSendVerifyCode =
+      "$linskServerName/auth/resendVerifycode.php";
 
   //===================ForgetPassword =====================
 
   static const String linkcheckemail =
       "$linskServerName/auth/forgetpassword/checkemail.php";
+
+  static const String linkcheckemailGetData =
+      "$linskServerName/auth/forgetpassword/checkemailGetData.php";
+
+  static const String linkcheckemailverifyCode =
+      "$linskServerName/auth/forgetpassword/checkemailverifyCode.php";
   static const String linkresetpassword =
       "$linskServerName/auth/forgetpassword/resetpassword.php";
 
@@ -59,6 +68,11 @@ class Apilinks {
   //==============coupon=============================
   static const String linkcheckcoupon =
       "$linskServerName/coupon/checkcoupon.php";
+
+  //==============notification=============================
+  static const String linknotifivation = "$linskServerName/notification.php";
+  static const String linkdeletenotfication =
+      "$linskServerName/deleteNitfication.php";
 
   //=================orders==========================
   static const String linkorderscheckout =

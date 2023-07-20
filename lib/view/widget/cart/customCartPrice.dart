@@ -18,7 +18,7 @@ class CustomCartPrice extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(Texte,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color.fromARGB(255, 128, 128, 128),
                   fontSize: 19,
                 )),
@@ -29,7 +29,7 @@ class CustomCartPrice extends StatelessWidget {
               Price,
               style: TextStyle(
                 color: active == false
-                    ? Color.fromARGB(255, 128, 128, 128)
+                    ? const Color.fromARGB(255, 128, 128, 128)
                     : AppColor.primaryColor,
                 fontSize: 19,
               ),

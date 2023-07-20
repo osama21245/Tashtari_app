@@ -3,8 +3,8 @@ import 'package:woocommerce_app/HandlingDataView.dart';
 import 'package:woocommerce_app/controller/orders/ordersdetaisController.dart';
 import 'package:woocommerce_app/core/constant/color.dart';
 import 'package:get/get.dart';
-import '../widget/checkout/customMyCheckoutText.dart';
-import '../widget/orders/ordersdetails/customOrdersDetails.dart';
+import '../../widget/checkout/customMyCheckoutText.dart';
+import '../../widget/orders/ordersdetails/customOrdersDetails.dart';
 
 class OrdersDetails extends GetView<ImpordersdetailsController> {
   const OrdersDetails({super.key});
@@ -29,9 +29,9 @@ class OrdersDetails extends GetView<ImpordersdetailsController> {
                         SizedBox(
                           height: size.height * 0.027,
                         ),
-                        CustomTable(),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 70.0),
+                        const CustomTable(),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 70.0),
                           child: Divider(
                             thickness: 2,
                           ),
@@ -46,9 +46,9 @@ class OrdersDetails extends GetView<ImpordersdetailsController> {
                                     borderRadius: BorderRadius.circular(10)),
                                 child: Column(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 17.0, top: 15),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 17.0, top: 15),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,

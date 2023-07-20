@@ -6,7 +6,7 @@ import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/orders_data.dart';
 import '../../data/model/orders_model.dart';
 
-class orderspendingController extends GetxController {
+class OrderspendingController extends GetxController {
   StatusRequest? statusRequest;
   OrdersData ordersdata = OrdersData(Get.find());
   List<OrdersModel> orderslist = [];
@@ -14,16 +14,21 @@ class orderspendingController extends GetxController {
   MyServices myservices = Get.find();
 }
 
-class ImporderspendingController extends orderspendingController {
+class ImporderspendingController extends OrderspendingController {
+  // ignore: non_constant_identifier_names
   String ReturnorderStatus(String order) {
-    if (order == "0")
+    if (order == "0") {
       return "Await Approval";
-    else if (order == "1")
+    } else if (order == "1") {
+      return "Accepted";
+    } else if (order == "2") {
       return "Prepare";
-    else if (order == "2")
+    } else if (order == "3") {
       return "On the way";
-    else {
+    } else if (order == "4") {
       return "Archive";
+    } else {
+      return "Un Known";
     }
   }
 
@@ -43,7 +48,6 @@ class ImporderspendingController extends orderspendingController {
     update();
     var response = await ordersdata
         .getData(myservices.sharedPreferences.getString("id").toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -58,7 +62,6 @@ class ImporderspendingController extends orderspendingController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await ordersdata.deleteData(orderid);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {

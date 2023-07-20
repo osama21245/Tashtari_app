@@ -55,7 +55,7 @@ class itemmain extends GetView<ImpitemControoler> {
                                   shrinkWrap: true,
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
-                                          childAspectRatio: 0.63,
+                                          childAspectRatio: 0.54,
                                           crossAxisCount: 2),
                                   itemBuilder: (BuildContext context, i) {
                                     controllerfav.isFavorite[c.items[i]

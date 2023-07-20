@@ -8,7 +8,7 @@ import '../../core/constant/services/services.dart';
 import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/address_data.dart';
 
-class addressAddController extends GetxController {
+abstract class AddressAddController extends GetxController {
   late TextEditingController addressname;
   late TextEditingController addressStreet;
   late TextEditingController addresscity;
@@ -19,7 +19,7 @@ class addressAddController extends GetxController {
   MyServices myservices = Get.find();
 }
 
-class ImpadressAddController extends addressAddController {
+class ImpadressAddController extends AddressAddController {
   add() async {
     statusRequest = StatusRequest.loading;
     update();
@@ -41,14 +41,12 @@ class ImpadressAddController extends addressAddController {
     update();
   }
 
+  // ignore: non_constant_identifier_names
   AddCompleted() {
     var Formdata = formstate.currentState;
     if (Formdata!.validate()) {
       add();
-      print("Vaild");
-    } else {
-      print("not valid");
-    }
+    } else {}
   }
 
   @override

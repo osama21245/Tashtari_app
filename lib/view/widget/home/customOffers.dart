@@ -17,13 +17,21 @@ class Customoffers extends GetView<ImphomePageControoler> {
           alignment: Alignment.center,
           height: 150,
           decoration: BoxDecoration(
-              color: AppColor.primaryColor,
+              gradient: LinearGradient(
+                  colors: [
+                    AppColor.fifththColor,
+                    AppColor.primaryColor,
+                    AppColor.secoundColor
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  transform: GradientRotation(3.14 / 4)),
               borderRadius: BorderRadius.circular(20)),
           child: ListTile(
-            title: Text("${controller.settingTitle}",
-                style: const TextStyle(color: Colors.white, fontSize: 20)),
-            subtitle: Text("${controller.settingsbody}",
-                style: TextStyle(color: Colors.white, fontSize: 30)),
+            title: Text(controller.settingTitle,
+                style: const TextStyle(color: Colors.white, fontSize: 15)),
+            subtitle: Text(controller.settingsbody,
+                style: const TextStyle(color: Colors.white, fontSize: 23)),
           ),
         ),
         Positioned(
@@ -31,7 +39,7 @@ class Customoffers extends GetView<ImphomePageControoler> {
             left: controller.langselected == "ar" ? -20 : null,
             right: controller.langselected == "en" ? -20 : null,
             child: CircleAvatar(
-              backgroundColor: AppColor.secoundColor,
+              backgroundColor: AppColor.sexColor,
               radius: 80,
               child: Padding(
                 padding: const EdgeInsets.only(top: 10, left: 10, right: 30.0),

@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:353531885293:android:f79945688189b16f3c7ee4",
+        "mobilesdk_app_id": "1:353531885293:android:6091e4ba5b6cc56a3c7ee4",
         "android_client_info": {
-          "package_name": "com.example.woocommerce_app"
+          "package_name": "cloud.osamagamil.tashtari"
         }
       },
       "oauth_client": [

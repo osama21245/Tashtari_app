@@ -21,7 +21,7 @@ class Homemain extends StatelessWidget {
             onPressed: () {
               Get.toNamed(AppRoutes.cart);
             },
-            child: Icon(Icons.shopping_basket_outlined),
+            child: const Icon(Icons.shopping_basket_outlined),
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
@@ -30,8 +30,8 @@ class Homemain extends StatelessWidget {
               child: controller.listpage.elementAt(controller.currentpage),
               onWillPop: () {
                 Get.defaultDialog(
-                    title: "Warning",
-                    middleText: "Are you sure you want to close app",
+                    title: "46".tr,
+                    middleText: "47".tr,
                     onConfirm: () {
                       exit(0);
                     },
@@ -39,8 +39,8 @@ class Homemain extends StatelessWidget {
                     buttonColor: AppColor.primaryColor,
                     confirmTextColor: Colors.white,
                     cancelTextColor: AppColor.primaryColor,
-                    textConfirm: "Yes",
-                    textCancel: "No");
+                    textConfirm: "48".tr,
+                    textCancel: "49".tr);
                 return Future.value(false);
               })),
     );

@@ -8,14 +8,16 @@ import 'package:woocommerce_app/data/datasource/remote/checkemail_data.dart';
 import '../../../core/class/statusrequest.dart';
 import '../../../core/function/handlingdata.dart';
 
-abstract class checkemailController extends GetxController {
+abstract class CheckemailController extends GetxController {
   checkemail();
+  List data = [];
+  // String id = "";
   late TextEditingController email;
   CheckemailData checkemailData = CheckemailData(Get.find());
   late StatusRequest statusRequest;
 }
 
-class ImpcheckemailController extends checkemailController {
+class ImpcheckemailController extends CheckemailController {
   @override
   @override
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
@@ -23,17 +25,29 @@ class ImpcheckemailController extends checkemailController {
   getData() async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await checkemailData.getData(
-      email.text,
-    );
+    var response = await checkemailData.getData(email.text);
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        data.addAll(response["data"]);
+        postData(data[0]["users_id"]);
+      } else {
+        Get.defaultDialog(title: "Warning", middleText: " Email is not Exist");
+      }
+    }
+    update();
+  }
+
+  postData(String id) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await checkemailData.postData(email.text, id);
     print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        Get.offNamed(AppRoutes.verifyCode, arguments: {"e": email.text});
-
-        // items.addAll(response["items"]);
-        // categories.addAll(response["categories"]);
+        Get.offNamed(AppRoutes.verifyCode,
+            arguments: {"e": email.text, "o": id});
       } else {
         Get.defaultDialog(title: "Warning", middleText: " Email is not Exist");
       }
@@ -45,11 +59,7 @@ class ImpcheckemailController extends checkemailController {
     var Formdata = formstate.currentState;
     if (Formdata!.validate()) {
       getData();
-
-      print("Vaild");
-    } else {
-      print("not valid");
-    }
+    } else {}
   }
 
   @override

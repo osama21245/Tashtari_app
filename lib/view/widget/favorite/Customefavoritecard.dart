@@ -29,13 +29,13 @@ class CustomfavoriteCard extends GetView<ImpfavourateController> {
             child: ListTile(
               trailing: IconButton(
                   onPressed: ondelete,
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.delete_outline,
                     color: Colors.red,
                   )),
               subtitle: Text(
                 subtitle,
-                style: TextStyle(fontWeight: FontWeight.w300),
+                style: const TextStyle(fontWeight: FontWeight.w300),
               ),
               title: Text(title),
               leading: CachedNetworkImage(

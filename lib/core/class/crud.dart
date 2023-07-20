@@ -5,14 +5,18 @@ import 'package:woocommerce_app/core/class/statusrequest.dart';
 import 'package:woocommerce_app/core/function/checkInternet.dart';
 import 'package:http/http.dart' as http;
 
+String _basicAuth = 'Basic ' + base64Encode(utf8.encode("osama:osama1234"));
+
+Map<String, String> myheaders = {'authorization': _basicAuth};
+
 class Crud {
   Future<Either<StatusRequest, Map>> postData(String link, Map data) async {
     try {
       if (await checkInternet()) {
-        var response = await http.post(Uri.parse(link), body: data);
+        var response =
+            await http.post(Uri.parse(link), body: data, headers: myheaders);
         if (response.statusCode == 200 || response.statusCode == 201) {
           Map responsebody = jsonDecode(response.body);
-          print(responsebody);
           return right(responsebody);
         } else {
           return const Left(StatusRequest.serverfailure);

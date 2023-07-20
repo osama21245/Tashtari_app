@@ -22,7 +22,7 @@ class HandlingDataView extends StatelessWidget {
           )
         : statusRequest == StatusRequest.offlinefaliure
             ? Padding(
-                padding: const EdgeInsets.only(top: 120),
+                padding: const EdgeInsets.all(80),
                 child: LottieBuilder.asset(AppImageAsset.offline),
               )
             : statusRequest == StatusRequest.serverfailure
@@ -32,7 +32,8 @@ class HandlingDataView extends StatelessWidget {
                   )
                 : statusRequest == StatusRequest.failure
                     ? Padding(
-                        padding: const EdgeInsets.only(top: 120),
+                        padding: const EdgeInsets.only(
+                            top: 200, right: 120, left: 120, bottom: 80),
                         child: LottieBuilder.asset(AppImageAsset.nodata),
                       )
                     : widget;

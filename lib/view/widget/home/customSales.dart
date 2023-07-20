@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/offersController.dart';
+//import '../../../core/constant/color.dart';
+import '../../../core/function/databaseTranslate.dart';
 import '../../../data/model/item_model.dart';
 import '../../../linksApi.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -22,10 +24,15 @@ class Customsales extends GetView<ImpoffersController> {
                 itemCount: controller.data.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, i) {
-                  return item(
-                      controller: controller,
-                      size: size,
-                      itemmodel: controller.data[i]);
+                  return InkWell(
+                    onTap: () {
+                      controller.gotoitemdetails(controller.data[i]);
+                    },
+                    child: item(
+                        controller: controller,
+                        size: size,
+                        itemmodel: controller.data[i]),
+                  );
                 }),
           );
         }));
@@ -72,8 +79,9 @@ class item extends StatelessWidget {
         Positioned(
             left: 23,
             child: Text(
-              "${itemmodel.itemsName}",
-              style: TextStyle(
+              databaseTranslate(
+                  "${itemmodel.itemsNameAr}", "${itemmodel.itemsName}"),
+              style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 14),
@@ -81,7 +89,17 @@ class item extends StatelessWidget {
         Image.asset(
           "assets/images/001-sale.png",
           height: size.height * 0.05,
-        )
+        ),
+        // Positioned(
+        //     right: size.width * 0.07,
+        //     bottom: size.height * 0.09,
+        //     child: Text(
+        //       "${itemmodel.itemspricediscount}\$",
+        //       style: const TextStyle(
+        //           color: AppColor.primaryColor,
+        //           fontWeight: FontWeight.bold,
+        //           fontSize: 19),
+        //     ))
       ],
     );
   }

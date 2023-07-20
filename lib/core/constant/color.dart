@@ -8,4 +8,6 @@ class AppColor {
   static const Color secoundColor = Color.fromARGB(255, 197, 139, 193);
   static const Color thirdColor = Color.fromARGB(255, 241, 209, 245);
   static const Color fourthColor = Color.fromARGB(255, 159, 33, 209);
+  static const Color fifththColor = Color.fromARGB(255, 97, 208, 228);
+  static const Color sexColor = Color.fromARGB(131, 221, 165, 217);
 }

@@ -47,7 +47,7 @@ class Home extends StatelessWidget {
                           Customyourtext(Title: "22".tr),
                           const Customcategories(),
                           const SizedBox(height: 10),
-                          Customyourtext(Title: "Top Selling"),
+                          Customyourtext(Title: "45".tr),
                           const Customyourproducts(),
                           Customyourtext(Title: "24".tr),
                           const Customsales()

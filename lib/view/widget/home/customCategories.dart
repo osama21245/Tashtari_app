@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/controller/home/homeControoler.dart';
+import 'package:woocommerce_app/core/constant/color.dart';
 import 'package:woocommerce_app/data/datasource/static/staticimage.dart';
 import 'package:woocommerce_app/linksApi.dart';
 
@@ -19,7 +20,7 @@ class Customcategories extends GetView<ImphomePageControoler> {
       height: 100,
       child: ListView.separated(
         separatorBuilder: (context, index) => const SizedBox(width: 10),
-        itemCount: imagelist.length,
+        itemCount: controller.categories.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Categories(
@@ -55,7 +56,14 @@ class Categories extends GetView<ImphomePageControoler> {
         children: [
           Container(
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 231, 192, 229),
+                gradient: LinearGradient(
+                    colors: [
+                      AppColor.secoundColor,
+                      const Color.fromARGB(94, 197, 139, 193),
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    transform: GradientRotation(3.14 / 4)),
                 borderRadius: BorderRadius.circular(180)),
             padding: const EdgeInsets.symmetric(horizontal: 15),
             height: size.height * 0.09,
@@ -69,8 +77,10 @@ class Categories extends GetView<ImphomePageControoler> {
           Text(
             databaseTranslate("${categoriesmodel.categoriesNameAr}",
                 "${categoriesmodel.categoriesName}"),
-            style: const TextStyle(
-              fontSize: 16,
+            style: TextStyle(
+              fontSize: myservices.sharedPreferences.getString("lang") == "ar"
+                  ? 12
+                  : 16,
             ),
           )
         ],

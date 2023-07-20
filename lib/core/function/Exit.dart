@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/core/constant/color.dart';
 
+// ignore: non_constant_identifier_names
 Future<bool> ExitApp() {
   Get.defaultDialog(
       title: "Warning",
@@ -16,7 +17,7 @@ Future<bool> ExitApp() {
             onPressed: () {
               exit(0);
             },
-            child: Text("Confirm")),
+            child: const Text("Confirm")),
         ElevatedButton(
             style: ButtonStyle(
                 backgroundColor: MaterialStateColor.resolveWith(
@@ -24,7 +25,7 @@ Future<bool> ExitApp() {
             onPressed: () {
               Get.back();
             },
-            child: Text("Cancel"))
+            child: const Text("Cancel"))
       ]);
   return Future.value(true);
 }

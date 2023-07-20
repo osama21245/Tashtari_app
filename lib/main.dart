@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/core/constant/localization/changelocal.dart';
 import 'package:woocommerce_app/core/constant/localization/translation.dart';
@@ -11,6 +12,10 @@ import 'core/constant/services/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitDown,
+    DeviceOrientation.portraitUp,
+  ]);
   await initialServices();
   runApp(const MyApp());
 }
@@ -29,7 +34,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeSrevice().getThemeMode(),
       translations: MyTranslation(),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Tashtari',
       locale: controller.language,
       initialBinding: InitialBindings(),
       getPages: routes,

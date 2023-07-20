@@ -20,7 +20,7 @@ class customPaymentType extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 5),
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
           decoration: BoxDecoration(
               color: condetion == true
                   ? AppColor.primaryColor

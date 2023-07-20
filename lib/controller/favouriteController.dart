@@ -12,7 +12,7 @@ import '../data/datasource/remote/home_data.dart';
 import '../data/model/favorate_model.dart';
 import '../data/model/item_model.dart';
 
-abstract class favourateController extends GetxController {
+abstract class FavourateController extends GetxController {
   Map isFavorite = {};
   setfavorite(id, val);
   late StatusRequest statusRequest;
@@ -30,7 +30,8 @@ abstract class favourateController extends GetxController {
   resetData() {}
 }
 
-class ImpfavourateController extends favourateController {
+class ImpfavourateController extends FavourateController {
+  @override
   checkSearch(String val) {
     if (val == "") {
       issearch = false;
@@ -48,7 +49,6 @@ class ImpfavourateController extends favourateController {
   search() async {
     statusRequest = StatusRequest.loading;
     var response = await homeData.search(search2!.text);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -72,15 +72,18 @@ class ImpfavourateController extends favourateController {
     data.clear();
   }
 
+  @override
   refreshpage() {
     resetData();
     viewfav();
   }
 
+  @override
   gotofav() {
     Get.toNamed(AppRoutes.favorite);
   }
 
+  @override
   setfavorite(id, val) {
     isFavorite[id] = val;
     update();
@@ -91,21 +94,21 @@ class ImpfavourateController extends favourateController {
     update();
     var response = await favouritedata.add(
         myservices.sharedPreferences.getString("id").toString(), itemsid);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text(
-              "Your item has been add to favorite",
-              style: TextStyle(color: Colors.white),
+            duration: const Duration(seconds: 1),
+            title: "81".tr,
+            messageText: Text(
+              "84".tr,
+              style: const TextStyle(color: Colors.white),
             ));
       } else {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Error in Connection",
-                style: TextStyle(color: Colors.white)));
+            title: "81".tr,
+            messageText:
+                Text("86".tr, style: const TextStyle(color: Colors.white)));
         statusRequest = StatusRequest.failure;
       }
     }
@@ -117,20 +120,20 @@ class ImpfavourateController extends favourateController {
     update();
     var response = await favouritedata.delete(
         myservices.sharedPreferences.getString("id").toString(), itemsid);
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         data.clear();
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Your item has been deleted from favorite",
-                style: TextStyle(color: Colors.white)));
+            duration: const Duration(seconds: 1),
+            title: "81".tr,
+            messageText:
+                Text("85".tr, style: const TextStyle(color: Colors.white)));
       } else {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Error in Connection",
-                style: TextStyle(color: Colors.white)));
+            title: "81".tr,
+            messageText:
+                Text("86".tr, style: const TextStyle(color: Colors.white)));
         statusRequest = StatusRequest.failure;
       }
     }
@@ -141,7 +144,6 @@ class ImpfavourateController extends favourateController {
     statusRequest = StatusRequest.loading;
     var response = await favouritedata
         .view(myservices.sharedPreferences.getString("id").toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -160,20 +162,20 @@ class ImpfavourateController extends favourateController {
     statusRequest = StatusRequest.loading;
     update();
     var response = await favouritedata.deleteitem(favid.toString());
-    print("==================$response");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         data.clear();
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Your item has been deleted from favorite",
-                style: TextStyle(color: Colors.white)));
+            duration: const Duration(seconds: 1),
+            title: "81".tr,
+            messageText:
+                Text("85".tr, style: const TextStyle(color: Colors.white)));
       } else {
         Get.rawSnackbar(
-            title: "Notfication",
-            messageText: const Text("Error in Connection",
-                style: TextStyle(color: Colors.white)));
+            title: "81".tr,
+            messageText:
+                Text("86".tr, style: const TextStyle(color: Colors.white)));
         statusRequest = StatusRequest.failure;
       }
     }

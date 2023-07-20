@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woocommerce_app/core/constant/color.dart';
 
 import '../../../controller/home/homeControoler.dart';
+import '../../../core/function/databaseTranslate.dart';
 import '../../../data/model/item_model.dart';
 import '../../../linksApi.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -74,11 +76,22 @@ class item extends StatelessWidget {
         Positioned(
             left: 23,
             child: Text(
-              "${itemmodel.itemsName}",
-              style: TextStyle(
+              databaseTranslate(
+                  "${itemmodel.itemsNameAr}", "${itemmodel.itemsName}"),
+              style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 14),
+            )),
+        Positioned(
+            right: size.width * 0.07,
+            bottom: size.height * 0.035,
+            child: Text(
+              "${itemmodel.itemspricediscount}\$",
+              style: const TextStyle(
+                  color: AppColor.primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 19),
             ))
       ],
     );
