@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/core/constant/localization/changelocal.dart';
 import 'package:woocommerce_app/core/constant/localization/translation.dart';
@@ -12,6 +15,10 @@ import 'core/constant/services/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isAndroid) {
+    await Future.delayed(const Duration(milliseconds: 1200))
+        .then((value) => FlutterNativeSplash.remove());
+  }
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,

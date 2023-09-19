@@ -10,4 +10,9 @@ class AppColor {
   static const Color fourthColor = Color.fromARGB(255, 159, 33, 209);
   static const Color fifththColor = Color.fromARGB(255, 97, 208, 228);
   static const Color sexColor = Color.fromARGB(131, 221, 165, 217);
+  //static const Color primaryColor = Color(0xFFF67952);
+  static const Color bgColor = Color(0xFFFBFBFD);
+
+  static const double defaultPadding = 16.0;
+  static const double defaultBorderRadius = 12.0;
 }

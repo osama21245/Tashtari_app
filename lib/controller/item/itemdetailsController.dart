@@ -6,7 +6,9 @@ import '../../core/class/statusrequest.dart';
 import '../../core/constant/services/services.dart';
 import '../../core/function/handlingdata.dart';
 import '../../data/datasource/remote/cart_data.dart';
+import '../../data/datasource/remote/itemdetais_data.dart';
 import '../../data/model/item_model.dart';
+import '../../data/model/itemsReview_model.dart';
 import '../cartController.dart';
 
 class ItemdetailsController extends GetxController {
@@ -16,9 +18,14 @@ class ItemdetailsController extends GetxController {
   gotocart() {}
   int? state = 0;
   int? price2;
+  bool isloading = false;
   CartData cartdata = CartData(Get.find());
+  ItemsReviewModel? itemsReviewModel;
+  List<ItemsReviewModel> reviews = [];
   MyServices myservices = Get.find();
-
+  itemDetailsData itemdetaisData = itemDetailsData(Get.find());
+  TextEditingController? comment;
+  String? Rating;
   ImpcartController cartcontroller = ImpcartController();
 
   changeprice(int? price) {}
@@ -55,6 +62,8 @@ class ImpitemdetailsController extends ItemdetailsController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
+        gotocart();
+
         Get.rawSnackbar(
             duration: const Duration(seconds: 1),
             title: "81".tr,
@@ -124,6 +133,45 @@ class ImpitemdetailsController extends ItemdetailsController {
     update();
   }
 
+  showreviews() async {
+    reviews.clear();
+    update();
+    var response = await itemdetaisData.getreviews(
+      itemmodel!.itemsId.toString(),
+      myservices.sharedPreferences.getString("id").toString(),
+    );
+    print(response);
+    statusRequest = handlingData(response);
+    print(response);
+    if (statusRequest == StatusRequest.success) {
+      List data = response['data'];
+      reviews.addAll(data.map((e) => ItemsReviewModel.fromJson(e)));
+    } else {
+      statusRequest = StatusRequest.failure;
+    }
+    update();
+  }
+
+  rateItem() async {
+    isloading = true;
+    update();
+    var response = await itemdetaisData.addreviews(
+        itemmodel!.itemsId.toString(),
+        myservices.sharedPreferences.getString("id").toString(),
+        comment!.text,
+        Rating == null ? "0" : Rating!);
+    print(response);
+    statusRequest = handlingData(response);
+    print(response);
+    if (statusRequest == StatusRequest.success) {
+      showreviews();
+    } else {
+      statusRequest = StatusRequest.failure;
+    }
+    isloading = false;
+    update();
+  }
+
   initialData() async {
     statusRequest = StatusRequest.loading;
 
@@ -136,9 +184,13 @@ class ImpitemdetailsController extends ItemdetailsController {
 
   @override
   void onInit() {
+    // print(reviews[0].reviewComment);
     itemmodel = Get.arguments["itemsmodel"];
     price2 = int.parse(itemmodel!.itemspricediscount!);
+    comment = TextEditingController();
     initialData();
+    showreviews();
+
     super.onInit();
   }
 }

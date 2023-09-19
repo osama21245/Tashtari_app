@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/controller/home/homeControoler.dart';
 import 'package:woocommerce_app/core/constant/color.dart';
 import 'package:woocommerce_app/core/constant/routesname.dart';
+import 'package:woocommerce_app/profile_pic.dart';
 
 import 'controller/settingscontroller.dart';
 import 'core/constant/services/theme.dart';
@@ -26,137 +28,237 @@ class _SettingsState extends State<Settings> {
 
     return ListView(
       children: [
-        Stack(
-          clipBehavior: Clip.none,
-          alignment: Alignment.center,
-          children: [
-            Container(
-              color: Colors.black26,
-              height: Get.width / 2.0,
-              width: Get.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.only(top: 30.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "${controller.name}",
-                          style: const TextStyle(
-                              fontSize: 30,
-                              fontFamily: "PlayfairDisplay",
-                              fontWeight: FontWeight.bold,
-                              color: AppColor.primaryColor),
-                        ),
-                        const SizedBox(
-                          width: 7,
-                        ),
-                        const Text("Welcome",
-                            style: TextStyle(
-                                fontSize: 30,
-                                fontFamily: "PlayfairDisplay",
-                                fontWeight: FontWeight.bold,
-                                color: AppColor.primaryColor)),
-                      ],
-                    ),
-                  )),
-                ],
-              ),
-            ),
-            Positioned(
-              top: Get.width / 3.4,
-              child: Container(
-                padding: const EdgeInsets.only(
-                    left: 30, right: 30, top: 30, bottom: 38),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: const Color.fromARGB(255, 247, 246, 246),
-                ),
-                child: CircleAvatar(
-                  radius: 40,
-                  backgroundColor: const Color.fromARGB(255, 247, 246, 246),
-                  child: Image.asset(
-                    "assets/images/avatar.png",
-                  ),
-                ),
-              ),
-            )
-          ],
+        SizedBox(height: size.height * 0.05),
+        Text(
+          "Profile",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: 23,
+              fontFamily: "Gordita",
+              color: Color.fromARGB(255, 85, 85, 85)),
         ),
         SizedBox(
-          height: Get.width / 3.8,
+          height: size.height * 0.01,
+        ),
+        ProfilePic(),
+        SizedBox(
+          height: Get.width / 16,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 13,
-          ),
-          child: Card(
-            color: const Color.fromARGB(255, 70, 69, 69),
-            child: ListTile(
-              trailing: Switch(
-                  value: ThemeSrevice().isSavedDarkMode(),
-                  onChanged: (value2) {
-                    setState(() {
-                      ThemeSrevice().changeTheme();
-                    });
-                  }),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 19),
-              title: Row(
-                children: [
-                  Text("63".tr,
-                      style: const TextStyle(
-                          fontFamily: "PlayfairDisplay", color: Colors.white)),
-                  const Icon(Icons.nightlight_outlined, color: Colors.white)
-                ],
-              ),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              primary: AppColor.primaryColor,
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              backgroundColor: Color(0xFFF5F6F9),
+            ),
+            onPressed: () {},
+            child: Row(
+              children: [
+                Icon(Icons.dark_mode_outlined),
+                SizedBox(width: 20),
+                Expanded(
+                    child: Text("63".tr,
+                        style: TextStyle(color: AppColor.primaryColor))),
+                Switch(
+                    value: ThemeSrevice().isSavedDarkMode(),
+                    onChanged: (value2) {
+                      setState(() {
+                        ThemeSrevice().changeTheme();
+                      });
+                    }),
+                //Icon(Icons.arrow_forward_ios),
+              ],
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 13,
-          ),
-          child: Card(
-            child: ListTile(
-              trailing: const Icon(Icons.info_outline),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 19),
-              title: Text(
-                "64".tr,
-                style: const TextStyle(fontFamily: "PlayfairDisplay"),
-              ),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              primary: AppColor.primaryColor,
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              backgroundColor: Color(0xFFF5F6F9),
+            ),
+            onPressed: () {},
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  "assets/images/User.svg",
+                  color: AppColor.primaryColor,
+                  width: 22,
+                ),
+                SizedBox(width: 20),
+                Expanded(
+                    child: Text(
+                  "64".tr,
+                  style: TextStyle(color: AppColor.primaryColor),
+                )),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: AppColor.primaryColor,
+                ),
+              ],
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            String? lang = myservices.sharedPreferences.getString("lang");
-            lang == "en"
-                ? Get.defaultDialog(
-                    title: "Warning",
-                    middleText:
-                        "Are You sure you want to change language to Arabic "
-                            .tr,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              primary: AppColor.primaryColor,
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              backgroundColor: Color(0xFFF5F6F9),
+            ),
+            onPressed: () {
+              String? lang = myservices.sharedPreferences.getString("lang");
+              lang == "en"
+                  ? Get.defaultDialog(
+                      title: "Warning",
+                      middleText:
+                          "Are You sure you want to change language to Arabic "
+                              .tr,
+                      onConfirm: () {
+                        myservices.sharedPreferences.setString("lang", "ar");
+                        print(lang);
+                        exit(0);
+                      },
+                      onCancel: () {},
+                      buttonColor: AppColor.primaryColor,
+                      confirmTextColor: Colors.white,
+                      cancelTextColor: AppColor.primaryColor,
+                      textConfirm: "48".tr,
+                      textCancel: "49".tr)
+                  : Get.defaultDialog(
+                      title: "تنبيه",
+                      middleText:
+                          "هل تريد تغيير اللغه الي اللفه الانجليزيه ".tr,
+                      onConfirm: () {
+                        myservices.sharedPreferences.setString("lang", "en");
+                        print(lang);
+                        exit(0);
+                      },
+                      onCancel: () {},
+                      buttonColor: AppColor.primaryColor,
+                      confirmTextColor: Colors.white,
+                      cancelTextColor: AppColor.primaryColor,
+                      textConfirm: "48".tr,
+                      textCancel: "49".tr);
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Icons.language_outlined,
+                  color: AppColor.primaryColor,
+                ),
+                SizedBox(width: 20),
+                Expanded(child: Text("99".tr)),
+                Icon(Icons.arrow_forward_ios),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              primary: AppColor.primaryColor,
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              backgroundColor: Color(0xFFF5F6F9),
+            ),
+            onPressed: () {
+              Get.toNamed(AppRoutes.Orderspending);
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Icons.shopping_cart_outlined,
+                  color: AppColor.primaryColor,
+                ),
+                SizedBox(width: 20),
+                Expanded(child: Text("66".tr)),
+                Icon(Icons.arrow_forward_ios),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              primary: AppColor.primaryColor,
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              backgroundColor: Color(0xFFF5F6F9),
+            ),
+            onPressed: () {
+              Get.toNamed(AppRoutes.Orderarchive);
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Icons.archive_outlined,
+                  color: AppColor.primaryColor,
+                ),
+                SizedBox(width: 20),
+                Expanded(child: Text("67".tr)),
+                Icon(Icons.arrow_forward_ios),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              primary: AppColor.primaryColor,
+              padding: EdgeInsets.all(20),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+              backgroundColor: Color(0xFFF5F6F9),
+            ),
+            onPressed: () {
+              Get.toNamed(AppRoutes.addressview);
+            },
+            child: Row(
+              children: [
+                Icon(
+                  Icons.location_on_outlined,
+                  color: AppColor.primaryColor,
+                ),
+                SizedBox(width: 20),
+                Expanded(child: Text("68".tr)),
+                Icon(Icons.arrow_forward_ios),
+              ],
+            ),
+          ),
+        ),
+        Container(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+            child: TextButton(
+              style: TextButton.styleFrom(
+                primary: AppColor.primaryColor,
+                padding: EdgeInsets.all(20),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                backgroundColor: Color(0xFFF5F6F9),
+              ),
+              onPressed: () {
+                Get.defaultDialog(
+                    title: "46".tr,
+                    middleText: "71".tr,
                     onConfirm: () {
-                      myservices.sharedPreferences.setString("lang", "ar");
-                      print(lang);
-                      exit(0);
-                    },
-                    onCancel: () {},
-                    buttonColor: AppColor.primaryColor,
-                    confirmTextColor: Colors.white,
-                    cancelTextColor: AppColor.primaryColor,
-                    textConfirm: "48".tr,
-                    textCancel: "49".tr)
-                : Get.defaultDialog(
-                    title: "تنبيه",
-                    middleText: "هل تريد تغيير اللغه الي اللفه الانجليزيه ".tr,
-                    onConfirm: () {
-                      myservices.sharedPreferences.setString("lang", "en");
-                      print(lang);
-                      exit(0);
+                      controllerSetting.logout();
                     },
                     onCancel: () {},
                     buttonColor: AppColor.primaryColor,
@@ -164,102 +266,18 @@ class _SettingsState extends State<Settings> {
                     cancelTextColor: AppColor.primaryColor,
                     textConfirm: "48".tr,
                     textCancel: "49".tr);
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 13.0),
-            child: Card(
-              child: ListTile(
-                trailing: const Icon(Icons.translate),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 19),
-                title: Text("99".tr,
-                    style: const TextStyle(fontFamily: "PlayfairDisplay")),
-              ),
-            ),
-          ),
-        ),
-        InkWell(
-          onTap: () {
-            Get.toNamed(AppRoutes.Orderspending);
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 13,
-            ),
-            child: Card(
-              child: ListTile(
-                trailing: const Icon(Icons.shopping_cart_outlined),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 19),
-                title: Text("66".tr,
-                    style: const TextStyle(fontFamily: "PlayfairDisplay")),
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 13,
-          ),
-          child: InkWell(
-            onTap: () {
-              Get.toNamed(AppRoutes.Orderarchive);
-            },
-            child: Card(
-              child: ListTile(
-                trailing: const Icon(Icons.archive_outlined),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 19),
-                title: Text("67".tr,
-                    style: const TextStyle(fontFamily: "PlayfairDisplay")),
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 13,
-          ),
-          child: InkWell(
-            onTap: () {
-              Get.toNamed(AppRoutes.addressview);
-            },
-            child: Card(
-              child: ListTile(
-                trailing: const Icon(Icons.location_on_outlined),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 19,
-                ),
-                title: Text("68".tr,
-                    style: const TextStyle(fontFamily: "PlayfairDisplay")),
-              ),
-            ),
-          ),
-        ),
-        InkWell(
-          onTap: () {
-            Get.defaultDialog(
-                title: "46".tr,
-                middleText: "71".tr,
-                onConfirm: () {
-                  controllerSetting.logout();
-                },
-                onCancel: () {},
-                buttonColor: AppColor.primaryColor,
-                confirmTextColor: Colors.white,
-                cancelTextColor: AppColor.primaryColor,
-                textConfirm: "48".tr,
-                textCancel: "49".tr);
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 13,
-            ),
-            child: Container(
-              child: Card(
-                child: ListTile(
-                  trailing: const Icon(Icons.logout_outlined),
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 19),
-                  title: Text("69".tr,
-                      style: const TextStyle(fontFamily: "PlayfairDisplay")),
-                ),
+              },
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    "assets/images/Log out.svg",
+                    color: AppColor.primaryColor,
+                    width: 22,
+                  ),
+                  SizedBox(width: 20),
+                  Expanded(child: Text("69".tr)),
+                  Icon(Icons.arrow_forward_ios),
+                ],
               ),
             ),
           ),

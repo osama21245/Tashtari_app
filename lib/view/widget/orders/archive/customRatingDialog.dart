@@ -31,7 +31,7 @@ showdialogRating(BuildContext context, String orderid) {
       submitButtonText: 'Submit',
       submitButtonTextStyle: const TextStyle(color: AppColor.primaryColor),
       commentHint: 'Set your custom comment hint',
-      onCancelled: () => print('cancelled'),
+      onCancelled: () => print('cancelled'), starSize: 26,
       onSubmitted: (response) {
         ImporderArchiveController controller = Get.find();
 

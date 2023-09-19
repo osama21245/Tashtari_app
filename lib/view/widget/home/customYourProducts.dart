@@ -4,6 +4,9 @@ import 'package:woocommerce_app/core/constant/color.dart';
 
 import '../../../controller/home/homeControoler.dart';
 import '../../../core/function/databaseTranslate.dart';
+import '../../../core/function/show_rating_home2.dart';
+import '../../../core/function/showrating.dart';
+import '../../../core/function/showratingHome.dart';
 import '../../../data/model/item_model.dart';
 import '../../../linksApi.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -16,19 +19,22 @@ class Customyourproducts extends GetView<ImphomePageControoler> {
     Size size = MediaQuery.of(context).size;
     return GetBuilder<ImphomePageControoler>(builder: (c) {
       return Container(
-        height: size.height * 0.2,
+        height: size.height * 0.26,
         child: ListView.builder(
             itemCount: controller.items.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, i) {
-              return InkWell(
-                onTap: () {
-                  controller.gotoitemdetails(controller.items[i]);
-                },
-                child: item(
-                    controller: controller,
-                    size: size,
-                    itemmodel: controller.items[i]),
+              return Padding(
+                padding: EdgeInsets.only(left: size.width * 0.023),
+                child: InkWell(
+                  onTap: () {
+                    controller.gotoitemdetails(controller.items[i]);
+                  },
+                  child: item(
+                      controller: controller,
+                      size: size,
+                      itemmodel: controller.items[i]),
+                ),
               );
             }),
       );
@@ -53,45 +59,74 @@ class item extends StatelessWidget {
     return Stack(
       children: [
         Container(
-            padding: const EdgeInsets.symmetric(horizontal: 34, vertical: 10),
-            margin: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(
+                horizontal: size.width * 0.02, vertical: size.height * 0.001),
             child: Padding(
-              padding: const EdgeInsets.only(
-                top: 15.0,
+              padding: EdgeInsets.only(
+                top: size.height * 0.01,
               ),
               child: CachedNetworkImage(
                 imageUrl: "${Apilinks.linkimageItems}/${itemmodel.itemsImage}",
-                height: size.height * 0.12,
-                width: size.width * 0.30,
-                fit: BoxFit.fill,
+                height: size.height * 0.15,
+                width: size.width * 0.37,
+                fit: BoxFit.contain,
               ),
             )),
         Container(
           decoration: BoxDecoration(
-              color: Colors.black.withOpacity(0.3),
+              border: Border.all(color: Color.fromARGB(83, 66, 16, 112)),
+              gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(28, 97, 208, 228),
+                    Color.fromARGB(29, 160, 113, 179),
+                    Color.fromARGB(15, 197, 139, 193)
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  transform: GradientRotation(3.14 / 4)),
               borderRadius: BorderRadius.circular(20)),
-          height: size.height * 0.17,
-          width: size.width * 0.48,
+          height: size.height * 0.26,
+          width: size.width * 0.42,
         ),
         Positioned(
-            left: 23,
+            bottom: size.height * 0.07,
+            left: size.width * 0.035,
             child: Text(
               databaseTranslate(
                   "${itemmodel.itemsNameAr}", "${itemmodel.itemsName}"),
-              style: const TextStyle(
-                  color: Colors.white,
+              style: TextStyle(
+                  fontFamily: "PlayfairDisplay",
+                  color:
+                      myservices.sharedPreferences.getBool("isDarkMode") == true
+                          ? Color.fromARGB(143, 238, 204, 247)
+                          : Color.fromARGB(166, 65, 33, 80),
                   fontWeight: FontWeight.bold,
-                  fontSize: 14),
+                  fontSize: 11),
             )),
         Positioned(
-            right: size.width * 0.07,
-            bottom: size.height * 0.035,
+            bottom: size.height * 0.017,
+            left: size.width * 0.039,
             child: Text(
-              "${itemmodel.itemspricediscount}\$",
-              style: const TextStyle(
-                  color: AppColor.primaryColor,
+              "\$${itemmodel.itemsPrice}.00",
+              style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 19),
+                  fontSize: 17,
+                  color: Color.fromARGB(157, 21, 0, 22)),
+            )),
+        Positioned(
+            bottom: size.height * 0.0478,
+            left: size.width * 0.035,
+            child: Row(
+              children: [
+                RatingDisplayWidgetHome2(
+                    rating: itemmodel.totalrating == null
+                        ? 0.0
+                        : double.parse(itemmodel.totalrating!)),
+                Text(
+                  "(${itemmodel.totalrating})",
+                  style: TextStyle(fontSize: 9),
+                )
+              ],
             ))
       ],
     );

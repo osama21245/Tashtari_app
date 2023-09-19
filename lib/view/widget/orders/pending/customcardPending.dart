@@ -97,25 +97,31 @@ class CustomcardPending extends GetView<ImporderspendingController> {
                   ),
                   const Spacer(),
                   MaterialButton(
-                    minWidth: size.width * 0.12,
+                    minWidth: size.width * 0.07,
                     textColor: Colors.white,
                     color: AppColor.primaryColor,
                     onPressed: () {
                       Get.toNamed(AppRoutes.OrdersDetails,
                           arguments: {"details": orderModel});
                     },
-                    child: const Text("Detials"),
+                    child: const Text(
+                      "Detials",
+                      style: TextStyle(fontSize: 12),
+                    ),
                   ),
                   SizedBox(
                     width: size.width * 0.02,
                   ),
                   if (orderModel.ordersStatus == "0")
                     MaterialButton(
-                      minWidth: size.width * 0.1,
+                      minWidth: size.width * 0.07,
                       textColor: Colors.white,
                       color: AppColor.primaryColor,
                       onPressed: ondelete,
-                      child: const Text("Remove"),
+                      child: const Text(
+                        "Remove",
+                        style: TextStyle(fontSize: 12),
+                      ),
                     )
                 ],
               )

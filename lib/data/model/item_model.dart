@@ -7,10 +7,12 @@ class Itemmodel {
   String? itemsCount;
   String? itemsActive;
   String? itemsPrice;
+  String? totalrating;
   String? itemsDiscount;
   String? itemsDate;
   String? itmesCat;
   String? itemsImage;
+  String? items3d;
   String? categoriesId;
   String? categoriesName;
   String? categoriesNameAr;
@@ -28,6 +30,7 @@ class Itemmodel {
       this.itemsCount,
       this.itemsActive,
       this.itemsPrice,
+      this.items3d,
       this.itemsDiscount,
       this.itemsDate,
       this.itmesCat,
@@ -38,7 +41,8 @@ class Itemmodel {
       this.categoriesImage,
       this.categoriesDatetime,
       this.favorite,
-      this.itemspricediscount});
+      this.itemspricediscount,
+      this.totalrating});
 
   Itemmodel.fromJson(Map<String, dynamic> json) {
     itemsId = json['items_id'];
@@ -48,8 +52,10 @@ class Itemmodel {
     itemsDecriptiomAr = json['items_decriptiom_ar'];
     itemsCount = json['items_count'];
     itemsActive = json['items_active'];
+    totalrating = json['totalrate'];
     itemsPrice = json['items_price'];
     itemsDiscount = json['items_discount'];
+    items3d = json["items_3d"];
     itemsDate = json['items_date'];
     itmesCat = json['itmes_cat'];
     itemsImage = json['items_image'];
@@ -75,6 +81,8 @@ class Itemmodel {
     data['items_discount'] = this.itemsDiscount;
     data['items_date'] = this.itemsDate;
     data['itmes_cat'] = this.itmesCat;
+    data['items_3d'] = this.items3d;
+    data['totalrate'] = this.totalrating;
     data['items_image'] = this.itemsImage;
     data['categories_id'] = this.categoriesId;
     data['categories_name'] = this.categoriesName;

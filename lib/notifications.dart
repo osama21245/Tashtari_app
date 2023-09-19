@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woocommerce_app/core/constant/color.dart';
+import 'package:woocommerce_app/core/function/databaseTranslate.dart';
 import 'package:woocommerce_app/view/widget/checkout/customMyCheckoutText.dart';
 
 import 'HandlingDataView.dart';
@@ -55,7 +56,11 @@ class Notifications extends StatelessWidget {
                                   ),
                                 ),
                                 Positioned(
-                                    right: 65,
+                                    right: myservices.sharedPreferences
+                                                .getString("lang") ==
+                                            "ar"
+                                        ? size.width * 0.5
+                                        : 65,
                                     top: 11,
                                     child: Text(
                                       "${controller.notifications[index]["notification_datetime"]}",

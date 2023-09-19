@@ -25,4 +25,7 @@ class AppRoutes {
   static const OrdersDetails = "/OrdersDetails";
   static const Orderarchive = "/Orderarchive";
   static const Notifications = "/Notifications";
+  static const Toggel = "/Toggle";
+  static const visa = "/visa";
+  static const refcode = "/refcode";
 }

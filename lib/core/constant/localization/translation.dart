@@ -57,7 +57,7 @@ class MyTranslation extends Translations {
           "49": "لا",
           "50": "الاشعارات",
           "51": "العروض",
-          "52": "اذهب الي السله",
+          "52": "اضف الي السله",
           "53": "اللون",
           "54": "اضف لتري السعر",
           "55": "ادخل الكود",
@@ -106,6 +106,7 @@ class MyTranslation extends Translations {
           "98": "الطلب",
           "99": "تغيير اللغه",
           "100": "دقائق",
+          "131": "اكتب تعليقك"
         },
         "en": {
           "1": "Choose Language",
@@ -161,7 +162,7 @@ class MyTranslation extends Translations {
           "49": "no",
           "50": "Notfication",
           "51": "Offers",
-          "52": "Go To Cart",
+          "52": "Add To Cart",
           "53": "Color",
           "54": "add to see price",
           "55": "Enter Code",
@@ -210,6 +211,7 @@ class MyTranslation extends Translations {
           "98": "Checkout",
           "99": "Change Language",
           "100": "minutes",
+          "131": "Write your comment"
         }
       };
 }

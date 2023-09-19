@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../controller/home/homeControoler.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/constant/imgaeasset.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class Customoffers extends GetView<ImphomePageControoler> {
   const Customoffers({super.key});
@@ -28,10 +29,38 @@ class Customoffers extends GetView<ImphomePageControoler> {
                   transform: GradientRotation(3.14 / 4)),
               borderRadius: BorderRadius.circular(20)),
           child: ListTile(
-            title: Text(controller.settingTitle,
-                style: const TextStyle(color: Colors.white, fontSize: 15)),
-            subtitle: Text(controller.settingsbody,
-                style: const TextStyle(color: Colors.white, fontSize: 23)),
+            title: AnimatedTextKit(
+              repeatForever: true,
+              animatedTexts: [
+                ColorizeAnimatedText(controller.settingTitle,
+                    speed: Duration(milliseconds: 500),
+                    textStyle: TextStyle(color: Colors.white, fontSize: 15),
+                    colors: [
+                      Colors.white,
+                      Colors.purple,
+                      Colors.blue,
+                      Colors.yellow
+                    ]),
+              ],
+            ),
+            //,Text(controller.settingTitle,
+            //     style: const TextStyle(color: Colors.white, fontSize: 15)),
+            subtitle: AnimatedTextKit(
+              repeatForever: true,
+              animatedTexts: [
+                ColorizeAnimatedText(controller.settingsbody,
+                    speed: Duration(milliseconds: 500),
+                    textStyle: TextStyle(color: Colors.white, fontSize: 15),
+                    colors: [
+                      Colors.white,
+                      Colors.purple,
+                      Colors.blue,
+                      Colors.yellow
+                    ]),
+              ],
+            ),
+            //  Text(controller.settingsbody,
+            //     style: const TextStyle(color: Colors.white, fontSize: 23)),
           ),
         ),
         Positioned(

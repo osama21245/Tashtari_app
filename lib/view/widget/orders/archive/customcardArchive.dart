@@ -81,22 +81,30 @@ class CustomcardArchive extends GetView<ImporderArchiveController> {
                   ),
                   const Spacer(),
                   MaterialButton(
+                    minWidth: size.width * 0.07,
                     textColor: Colors.white,
                     color: AppColor.primaryColor,
                     onPressed: () {
                       Get.toNamed(AppRoutes.OrdersDetails,
                           arguments: {"details": orderModel});
                     },
-                    child: const Text("Detials"),
+                    child: const Text(
+                      "Detials",
+                      style: TextStyle(fontSize: 10),
+                    ),
                   ),
                   SizedBox(
                     width: size.width * 0.01,
                   ),
                   MaterialButton(
+                    minWidth: size.width * 0.07,
                     textColor: Colors.white,
                     color: AppColor.primaryColor,
                     onPressed: onRating,
-                    child: const Text("Rating"),
+                    child: const Text(
+                      "Rating",
+                      style: TextStyle(fontSize: 10),
+                    ),
                   ),
                 ],
               )

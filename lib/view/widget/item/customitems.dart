@@ -7,6 +7,7 @@ import '../../../controller/favouriteController.dart';
 import '../../../controller/item/itemControoler.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/function/databaseTranslate.dart';
+import '../../../core/function/showrating.dart';
 import '../../../linksApi.dart';
 
 // ignore: must_be_immutable
@@ -138,6 +139,10 @@ class Customitems extends GetView<ImpitemControoler> {
                                     )))
                     ],
                   ),
+                  RatingDisplayWidget(
+                      rating: itemmodel.totalrating == null
+                          ? 0.0
+                          : double.parse(itemmodel.totalrating!))
                 ],
               ),
             ),

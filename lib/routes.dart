@@ -3,7 +3,9 @@ import 'package:woocommerce_app/cart.dart';
 import 'package:woocommerce_app/core/constant/routesname.dart';
 import 'package:woocommerce_app/favorite.dart';
 import 'package:woocommerce_app/settings.dart';
+import 'package:woocommerce_app/test.dart';
 import 'package:woocommerce_app/view/screen/address/view.dart';
+import 'package:woocommerce_app/view/screen/language.dart';
 import 'package:woocommerce_app/view/screen/orders/ordersdetails.dart';
 import 'package:woocommerce_app/view/screen/orders/pending.dart';
 import 'package:woocommerce_app/view/screen/auth/forgetpassword/checkemail.dart';
@@ -18,18 +20,19 @@ import 'package:woocommerce_app/view/screen/home/homepaemain.dart';
 import 'package:woocommerce_app/view/screen/home/homepage.dart';
 import 'package:woocommerce_app/view/screen/itemdatails/itemdetails.dart';
 import 'package:woocommerce_app/view/screen/items/itemmain.dart';
-import 'package:woocommerce_app/view/screen/language.dart';
 import 'package:woocommerce_app/view/screen/onboarding.dart';
 
 import 'checkout.dart';
+import 'controller/payment/ref_code_screen.dart';
+import 'controller/payment/toggle_screen.dart';
+import 'controller/payment/visa_screen.dart';
+
 import 'core/middleWare/myMiddleWare.dart';
-import 'notifications.dart';
 import 'view/screen/address/add.dart';
 import 'view/screen/orders/archived.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(
-      name: "/", page: () => const Language(), middlewares: [myMiddlware()]),
+  GetPage(name: "/", page: () => Language(), middlewares: [myMiddlware()]),
   GetPage(name: AppRoutes.login, page: () => const Login()),
   GetPage(name: AppRoutes.onboarding, page: () => const OnBoarding()),
   GetPage(name: AppRoutes.signup, page: () => const Signup()),
@@ -55,5 +58,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.Orderspending, page: () => const Orderspending()),
   GetPage(name: AppRoutes.OrdersDetails, page: () => const OrdersDetails()),
   GetPage(name: AppRoutes.Orderarchive, page: () => const Orderarchive()),
-  GetPage(name: AppRoutes.Notifications, page: () => const Notifications()),
+  GetPage(name: AppRoutes.Toggel, page: () => const ToggleScreen()),
+  GetPage(name: AppRoutes.visa, page: () => const VisaScreen()),
+  GetPage(name: AppRoutes.refcode, page: () => const ReferenceScreen()),
 ];
